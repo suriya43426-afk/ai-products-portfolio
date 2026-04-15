@@ -1,0 +1,26 @@
+# MAI Portfolio — runtime & build requirements
+# (Next.js project — dependencies are installed via `npm install` from package.json.
+#  This file is a human-readable prerequisite summary.)
+
+# Runtime
+node>=20
+npm>=10
+
+# Framework
+next==16.2.3
+react==19.2.4
+react-dom==19.2.4
+
+# Styling
+tailwindcss==^4
+@tailwindcss/postcss==^4
+
+# TypeScript / Tooling
+typescript==^5
+eslint==^9
+eslint-config-next==16.2.3
+
+# Setup
+# 1. npm install
+# 2. npm run dev          # http://localhost:3000
+# 3. npm run build && npm run start   # production

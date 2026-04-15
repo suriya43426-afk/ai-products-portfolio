@@ -1,0 +1,920 @@
+import type { ProjectData } from '@/types/project';
+
+export const projects: ProjectData[] = [
+  // ========== #1 Smart Factory APC AVEVA ==========
+  {
+    id: 1,
+    slug: 'smart-factory-apc-aveva',
+    title: 'Smart Factory APC AVEVA',
+    subtitle: 'Advanced Process Control for Biopower Boilers',
+    description:
+      'Vendor-licensed advanced process control across biopower boilers, delivering stable steam output and measurable fuel savings at production scale.',
+    image: '/images/factory.jpg',
+    heroImage: '/images/factory.jpg',
+    type: 'vendor',
+    businessUnit: 'factory',
+    status: 'active',
+    statusLabel: 'In Production',
+    techTags: ['AVEVA APC', 'OSIsoft PI', 'DCS', 'Six Sigma'],
+    techStack: [
+      { category: 'Process Control', technologies: ['AVEVA APC', 'DCS Integration'] },
+      { category: 'Historian', technologies: ['OSIsoft PI (1s interval)'] },
+      { category: 'Analytics', technologies: ['Six Sigma', 'SPC'] },
+    ],
+    kpis: [
+      { label: 'Fuel Reduction', value: '≥3%', highlight: 'green' },
+      { label: 'Dashboard Uptime', value: '≥99.5%' },
+      { label: 'License Horizon', value: '3 years' },
+    ],
+    benefits: [
+      { title: 'Stable steam output', description: 'Minimizes boiler excursions via closed-loop control.' },
+      { title: 'Fuel savings', description: 'Optimized fuel-to-steam ratio over manual operation.' },
+      { title: 'Operator support', description: 'SPC dashboards reduce cognitive load on shift teams.' },
+    ],
+    metricNote: 'Est. figures pending post-deployment validation.',
+    research: {
+      problemStatement:
+        'Biopower boiler operations rely on manual adjustments that lead to suboptimal fuel-to-steam ratios and process variability.',
+      objectives: [
+        'Reduce specific fuel consumption by ≥3% across target boilers',
+        'Stabilize steam pressure within ±2% of setpoint',
+        'Provide SPC visibility with ≥99.5% dashboard uptime',
+      ],
+      scope:
+        'Two biopower boilers at a reference mill, covering fuel feed, combustion air, and steam drum control loops over a 24-month observation window.',
+      approach: {
+        type: 'Applied Research — Experimental',
+        framework: 'DMAIC (Define, Measure, Analyze, Improve, Control)',
+        description:
+          'Closed-loop APC with statistical process control benchmarking against manual operation baselines.',
+        phases: [
+          {
+            name: 'Define',
+            duration: '2 months',
+            activities: ['Process scoping', 'Stakeholder alignment', 'KPI charter'],
+            deliverables: ['Project charter', 'Boundary document'],
+          },
+          {
+            name: 'Measure',
+            duration: '3 months',
+            activities: ['Baseline sampling', 'Data quality audit on PI tags', 'MSA on instruments'],
+            deliverables: ['Baseline dataset', 'Measurement capability report'],
+          },
+          {
+            name: 'Analyze',
+            duration: '3 months',
+            activities: ['Six Sigma analysis', 'Loop tuning review', 'Root-cause mapping'],
+            deliverables: ['Analysis report'],
+          },
+          {
+            name: 'Improve',
+            duration: '6 months',
+            activities: ['APC model deployment', 'Controller commissioning', 'A/B shift trials'],
+            deliverables: ['Live APC models', 'A/B trial report'],
+          },
+          {
+            name: 'Control',
+            duration: '10 months',
+            activities: ['SPC monitoring', 'Drift detection', 'Model governance'],
+            deliverables: ['SPC dashboards', 'Control plan'],
+          },
+        ],
+      },
+      dataCollection: {
+        sources: [
+          {
+            name: 'OSIsoft PI Historian',
+            type: 'Time-series',
+            description: 'Fuel feed, combustion air, drum level, steam flow at 1-second resolution.',
+            format: 'PI Tags',
+          },
+          {
+            name: 'AVEVA APC Signals',
+            type: 'Control set-points',
+            description: 'APC move plans and control limits.',
+            format: 'APC Exports',
+          },
+        ],
+        volume: '≈1.2 TB historian data per year per boiler',
+        frequency: '1-second sampling, hourly aggregates',
+        preprocessing: ['Outlier removal', 'Gap filling', 'Tag alignment'],
+      },
+      analysisMethod: {
+        primary: 'Statistical Process Control (SPC) with capability indices',
+        secondary: 'Comparative shift-level A/B analysis',
+        tools: ['AVEVA APC', 'Minitab', 'Python'],
+        metrics: ['SFC', 'Steam flow CV', 'Cp/Cpk'],
+      },
+      validation: {
+        method: 'A/B testing — APC-controlled vs manual shifts over 6 months',
+        baseline: 'Prior 12 months of manual operation',
+        successCriteria: [
+          '≥3% fuel reduction',
+          '≥99.5% dashboard uptime',
+          'Cpk ≥1.33 on steam pressure',
+        ],
+      },
+      ethicsAndGovernance:
+        'Change management per site MOC. All deployments logged in controller audit trail.',
+    },
+    timeline: [
+      {
+        phase: 'Commissioning',
+        startDate: '2025-Q4',
+        endDate: '2026-Q1',
+        milestones: ['APC go-live', 'First SPC dashboard'],
+      },
+      {
+        phase: 'Stabilization',
+        startDate: '2026-Q2',
+        endDate: '2026-Q4',
+        milestones: ['A/B trial closeout', 'Savings validation'],
+      },
+    ],
+    risks: [
+      {
+        risk: 'Sensor drift invalidating APC model',
+        impact: 'high',
+        probability: 'medium',
+        mitigation: 'Scheduled calibration + drift alerts',
+      },
+      {
+        risk: 'Operator override erodes savings',
+        impact: 'medium',
+        probability: 'high',
+        mitigation: 'Training + utilization monitoring',
+      },
+    ],
+    budget: [
+      { category: 'License (3 yr)', amount: '฿18–22M' },
+      { category: 'Integration & services', amount: '฿7–13M' },
+    ],
+    dependsOn: [2],
+    feedsInto: [9],
+    relatedProjects: [2, 9],
+  },
+
+  // ========== #2 Data Management Tool ==========
+  {
+    id: 2,
+    slug: 'data-management-tool',
+    title: 'Data Management Tool',
+    subtitle: 'Enterprise Lakehouse — Raw, Silver, Gold',
+    description:
+      'Medallion lakehouse unifying SAP, PI, satellite, and factory data into a governed single source of truth.',
+    image: '/images/navy-data.jpg',
+    heroImage: '/images/navy-data.jpg',
+    type: 'platform',
+    businessUnit: 'corporate',
+    status: 'active',
+    statusLabel: 'Scaling',
+    techTags: ['Redshift', 'Medallion', 'SAP Rise', 'OSIsoft PI'],
+    techStack: [
+      { category: 'Lakehouse', technologies: ['AWS Redshift', 'S3', 'Glue'] },
+      { category: 'Sources', technologies: ['SAP Rise', 'OSIsoft PI', 'Sentinel-2', 'Factory CV'] },
+      { category: 'Governance', technologies: ['Row-Level Security', 'Data Catalog'] },
+    ],
+    kpis: [
+      { label: 'Products on Gold', value: '9/9', highlight: 'blue' },
+      { label: 'Report SLA', value: '<15 min' },
+      { label: 'RLS Coverage', value: '100%' },
+    ],
+    benefits: [
+      { title: 'Single source of truth', description: 'Deduplicated, governed Gold Zone for analytics.' },
+      { title: 'Faster reports', description: 'Dashboards refresh in minutes, not hours.' },
+      { title: 'Traceable lineage', description: 'End-to-end lineage from source to KPI.' },
+    ],
+    metricNote: 'Coverage scaled progressively BU by BU.',
+    research: {
+      problemStatement:
+        'Enterprise data is siloed across SAP, PI, satellite, and factory systems with no single source of truth, blocking downstream AI workloads.',
+      objectives: [
+        'Land all 9 products into a Gold Zone',
+        'Report refresh SLA <15 minutes',
+        'Enforce RLS across sensitive domains',
+      ],
+      scope: 'Enterprise-wide ingestion and curation across 4 source families, delivered as a medallion lakehouse.',
+      approach: {
+        type: 'Design Science Research',
+        framework: 'Enterprise Architecture (TOGAF-aligned)',
+        description: 'Medallion lakehouse (Raw → Silver → Gold) with automated data quality gates.',
+        phases: [
+          {
+            name: 'Foundation',
+            duration: '4 months',
+            activities: ['Source profiling', 'Reference architecture', 'Security model'],
+            deliverables: ['Architecture blueprint', 'Security model'],
+          },
+          {
+            name: 'Ingestion',
+            duration: '6 months',
+            activities: ['CDC from SAP', 'PI historian sync', 'Satellite ETL'],
+            deliverables: ['Raw zone loaders'],
+          },
+          {
+            name: 'Curation',
+            duration: '6 months',
+            activities: ['Silver modeling', 'Gold KPI marts', 'DQ rules'],
+            deliverables: ['Gold marts', 'DQ rulebook'],
+          },
+          {
+            name: 'Enablement',
+            duration: '4 months',
+            activities: ['RLS rollout', 'Catalog adoption', 'BU training'],
+            deliverables: ['RLS matrix', 'Adoption KPIs'],
+          },
+        ],
+      },
+      dataCollection: {
+        sources: [
+          { name: 'SAP Rise', type: 'ERP', description: 'Transactions, master data.', format: 'CDC' },
+          { name: 'OSIsoft PI', type: 'Historian', description: 'Plant time-series.', format: 'PI Tags' },
+          { name: 'Sentinel-2', type: 'Earth Obs.', description: 'Satellite imagery.', format: 'GeoTIFF' },
+          { name: 'Factory Cameras', type: 'CV', description: 'Dump/weigh imagery.', format: 'JPEG' },
+        ],
+        volume: 'Multi-TB per quarter',
+        frequency: 'Near real-time to daily',
+        preprocessing: ['Schema standardization', 'DQ checks', 'PII masking'],
+      },
+      analysisMethod: {
+        primary: 'Dimensional modeling for Gold KPI marts',
+        tools: ['Redshift', 'dbt', 'Great Expectations'],
+        metrics: ['Freshness', 'Completeness', 'Accuracy', 'Lineage coverage'],
+      },
+      validation: {
+        method: 'Progressive rollout BU by BU with reconciliation to source systems',
+        baseline: 'Source system truth + prior reporting extracts',
+        successCriteria: ['All 9 products on Gold', 'Report SLA <15 min', '100% RLS on restricted marts'],
+      },
+    },
+    timeline: [
+      { phase: 'Foundation', startDate: '2025-Q3', endDate: '2026-Q1', milestones: ['Raw zone live'] },
+      { phase: 'Curation', startDate: '2026-Q2', endDate: '2026-Q3', milestones: ['Gold marts live'] },
+    ],
+    risks: [
+      {
+        risk: 'Source schema drift',
+        impact: 'high',
+        probability: 'medium',
+        mitigation: 'Contract tests + alerting',
+      },
+      {
+        risk: 'RLS misconfiguration',
+        impact: 'high',
+        probability: 'low',
+        mitigation: 'Policy-as-code reviews',
+      },
+    ],
+    budget: [{ category: 'Year 1', amount: '฿40–55M' }],
+    dependsOn: [],
+    feedsInto: [1, 3, 4, 5, 7, 8, 9],
+    relatedProjects: [3, 6],
+  },
+
+  // ========== #3 Agentic AI ==========
+  {
+    id: 3,
+    slug: 'agentic-ai',
+    title: 'Agentic AI',
+    subtitle: 'Multi-LLM Orchestration for Knowledge Work',
+    description:
+      'LangChain + n8n orchestration automating repetitive knowledge work across operations, procurement, and reporting.',
+    image: '/images/farm-field.jpg',
+    heroImage: '/images/farm-field.jpg',
+    type: 'genai',
+    businessUnit: 'corporate',
+    status: 'pending',
+    statusLabel: 'Pilot',
+    techTags: ['LangChain', 'n8n', 'RAG', 'Multi-LLM'],
+    techStack: [
+      { category: 'Orchestration', technologies: ['n8n', 'LangChain'] },
+      { category: 'Retrieval', technologies: ['Vector DB', 'Redshift Gold'] },
+      { category: 'Models', technologies: ['Claude', 'GPT-4 class', 'Open-weight'] },
+    ],
+    kpis: [
+      { label: 'Cost / Query', value: '≤฿2.5', highlight: 'green' },
+      { label: 'Auto-Resolve', value: '70%' },
+      { label: 'Time Reduction', value: '85%' },
+    ],
+    benefits: [
+      { title: 'FTE leverage', description: 'Frees analysts from repetitive lookups and report prep.' },
+      { title: 'Consistent answers', description: 'RAG grounds responses in Gold Zone data.' },
+      { title: 'Model-agnostic', description: 'Evaluation framework picks the right LLM per task.' },
+    ],
+    metricNote: 'Pilots across 3 workflows; scaling on outcome.',
+    research: {
+      problemStatement:
+        '12+ FTEs engaged in repetitive knowledge work with high variance in output quality.',
+      objectives: [
+        'Achieve cost per query ≤฿2.5',
+        'Automate 70% of pilot workflow volume',
+        'Reduce turnaround time by 85%',
+      ],
+      scope: 'Three pilot workflows: invoice-match inquiries, product documentation QA, and operations reporting.',
+      approach: {
+        type: 'Applied Research — Comparative Evaluation',
+        framework: 'Multi-LLM Evaluation Framework',
+        description: 'Benchmark 4 LLM classes across workflows with RAG and human baseline.',
+        phases: [
+          {
+            name: 'Benchmark',
+            duration: '2 months',
+            activities: ['Eval set construction', 'LLM shortlisting', 'Cost modeling'],
+            deliverables: ['Evaluation framework'],
+          },
+          {
+            name: 'Pilot',
+            duration: '4 months',
+            activities: ['Workflow instrumentation', 'Human-in-the-loop review'],
+            deliverables: ['Pilot results'],
+          },
+          {
+            name: 'Scale',
+            duration: '6 months',
+            activities: ['Rollout to adjacent workflows', 'Governance integration'],
+            deliverables: ['Production workflows'],
+          },
+        ],
+      },
+      dataCollection: {
+        sources: [
+          { name: 'Gold Zone', type: 'Analytics', description: 'Curated enterprise data.', format: 'Redshift' },
+          { name: 'SAP', type: 'ERP', description: 'Transactions.', format: 'API' },
+          { name: 'Product Docs', type: 'Corpus', description: 'Manuals, SOPs.', format: 'PDF/MD' },
+        ],
+        volume: 'Thousands of documents + millions of transactions',
+        frequency: 'Continuous',
+        preprocessing: ['Chunking', 'Embedding', 'PII redaction'],
+      },
+      analysisMethod: {
+        primary: 'A/B testing AI vs manual per workflow',
+        tools: ['LangChain', 'n8n', 'RAGAS'],
+        metrics: ['Faithfulness', 'Answer relevancy', 'Cost', 'Latency'],
+      },
+      validation: {
+        method: 'Per-workflow A/B with human adjudication',
+        baseline: 'Manual workflow performance',
+        successCriteria: ['Cost/Query ≤฿2.5', '70% auto-resolution', '85% time reduction'],
+      },
+      ethicsAndGovernance: 'All agent actions logged; destructive actions require human approval.',
+    },
+    timeline: [
+      { phase: 'Pilot', startDate: '2026-Q1', endDate: '2026-Q2', milestones: ['First workflow live'] },
+      { phase: 'Scale', startDate: '2026-Q3', endDate: '2026-Q4', milestones: ['3 workflows in prod'] },
+    ],
+    risks: [
+      {
+        risk: 'Hallucinated responses',
+        impact: 'high',
+        probability: 'medium',
+        mitigation: 'RAG grounding + guardrails',
+      },
+      {
+        risk: 'LLM price volatility',
+        impact: 'medium',
+        probability: 'medium',
+        mitigation: 'Multi-vendor abstraction',
+      },
+    ],
+    budget: [{ category: 'Year 1', amount: '฿8–12M' }],
+    dependsOn: [2, 6],
+    feedsInto: [],
+    relatedProjects: [2, 6],
+  },
+
+  // ========== #4 Precision Farming ==========
+  {
+    id: 4,
+    slug: 'precision-farming',
+    title: 'Precision Farming',
+    subtitle: 'Geospatial Analytics for Yield Optimization',
+    description:
+      'Satellite-guided farm intelligence translating NDVI zones into variable-rate input prescriptions.',
+    image: '/images/precision.jpg',
+    heroImage: '/images/farm-hero.jpg',
+    type: 'vendor',
+    businessUnit: 'farm',
+    status: 'active',
+    statusLabel: 'Active',
+    techTags: ['Sentinel-2', 'GEE', 'NDVI', 'OneAgriPro'],
+    techStack: [
+      { category: 'Earth Obs.', technologies: ['Sentinel-2', 'Google Earth Engine'] },
+      { category: 'Agronomy', technologies: ['OneAgriPro', 'VRT guidance'] },
+      { category: 'Sensors', technologies: ['Weather stations', 'Soil probes'] },
+    ],
+    kpis: [
+      { label: 'Yield Uplift', value: '+8–12%', highlight: 'green' },
+      { label: 'Growers', value: '1.2M' },
+      { label: 'Revenue Upside', value: '฿120M' },
+    ],
+    benefits: [
+      { title: 'Data-driven planting', description: 'Decisions based on NDVI and soil instead of intuition.' },
+      { title: 'Input efficiency', description: '~15% fertilizer reduction through VRT.' },
+      { title: 'Scalable', description: 'Covers millions of rai through satellite coverage.' },
+    ],
+    metricNote: 'Uplift measured against neighboring control plots.',
+    research: {
+      problemStatement:
+        'Planting decisions rely on experience rather than data, leaving yield below agronomic potential.',
+      objectives: [
+        '8–12% yield uplift vs control',
+        '15% fertilizer reduction via VRT',
+        'Adoption by ≥5 cooperatives in year 1',
+      ],
+      scope: 'Pilot fields across 3 regions, 18 months with seasonal controls.',
+      approach: {
+        type: 'Applied Research — Longitudinal Study',
+        framework: 'CRISP-DM',
+        description: 'NDVI-driven zone mapping feeding VRT prescriptions and closed-loop yield feedback.',
+        phases: [
+          {
+            name: 'Business Understanding',
+            duration: '1 month',
+            activities: ['Grower interviews', 'KPI alignment'],
+            deliverables: ['Problem charter'],
+          },
+          {
+            name: 'Data Understanding',
+            duration: '2 months',
+            activities: ['Imagery ingestion', 'Soil baselines'],
+            deliverables: ['Data dictionary'],
+          },
+          {
+            name: 'Modeling',
+            duration: '4 months',
+            activities: ['NDVI zoning', 'VRT prescription rules'],
+            deliverables: ['Prescription maps'],
+          },
+          {
+            name: 'Evaluation',
+            duration: '6 months',
+            activities: ['Field trials', 'Yield measurement'],
+            deliverables: ['Trial report'],
+          },
+          {
+            name: 'Deployment',
+            duration: '5 months',
+            activities: ['Cooperative rollout', 'Training'],
+            deliverables: ['Deployment playbook'],
+          },
+        ],
+      },
+      dataCollection: {
+        sources: [
+          { name: 'Sentinel-2', type: 'Satellite', description: '5-day revisit multispectral imagery.', format: 'GeoTIFF' },
+          { name: 'GEE', type: 'Platform', description: 'Planetary-scale processing.', format: 'API' },
+          { name: 'OneAgriPro', type: 'Agronomy', description: 'Plot records.', format: 'API' },
+          { name: 'Weather Stations', type: 'IoT', description: 'Rainfall, temperature.', format: 'Time-series' },
+          { name: 'Soil Sensors', type: 'IoT', description: 'Moisture, EC.', format: 'Time-series' },
+        ],
+        volume: 'Regional imagery — TBs per season',
+        frequency: '5-day satellite, daily IoT',
+        preprocessing: ['Cloud masking', 'Atmospheric correction', 'NDVI computation'],
+      },
+      analysisMethod: {
+        primary: 'Geospatial analytics + variable-rate prescription',
+        secondary: 'Mixed-effects model for yield attribution',
+        tools: ['GEE', 'Python (rasterio, xarray)', 'QGIS'],
+        metrics: ['Yield (t/rai)', 'Input cost', 'NDVI season integral'],
+      },
+      validation: {
+        method: 'Controlled field trials — data-driven vs traditional',
+        baseline: 'Prior-season traditional practice',
+        successCriteria: ['8–12% yield uplift', '15% fertilizer reduction'],
+      },
+    },
+    timeline: [
+      { phase: 'Pilot', startDate: '2025-Q3', endDate: '2026-Q2', milestones: ['Baseline complete'] },
+      { phase: 'Scale', startDate: '2026-Q3', endDate: '2027-Q2', milestones: ['Cooperative rollout'] },
+    ],
+    risks: [
+      {
+        risk: 'Cloud cover gaps in imagery',
+        impact: 'medium',
+        probability: 'high',
+        mitigation: 'Optical + radar fusion fallback',
+      },
+      {
+        risk: 'Low grower adoption',
+        impact: 'high',
+        probability: 'medium',
+        mitigation: 'Extension officer enablement',
+      },
+    ],
+    budget: [{ category: '3-year charter', amount: '฿35–50M' }],
+    dependsOn: [2],
+    feedsInto: [5],
+    relatedProjects: [5, 2],
+  },
+
+  // ========== #5 Cane Volume Prediction ==========
+  {
+    id: 5,
+    slug: 'cane-volume-prediction',
+    title: 'Cane Volume Prediction',
+    subtitle: 'LSTM + XGBoost Yield Forecasting',
+    description:
+      'Season-ahead cane volume forecasting combining UAV imagery, weather, and planting calendar into an ensemble model.',
+    image: '/images/farm-hero.jpg',
+    heroImage: '/images/farm-hero.jpg',
+    type: 'ownbuild',
+    businessUnit: 'farm',
+    status: 'active',
+    statusLabel: 'Productionizing',
+    techTags: ['LSTM', 'XGBoost', 'UAV', 'MLOps'],
+    techStack: [
+      { category: 'Models', technologies: ['LSTM', 'XGBoost'] },
+      { category: 'MLOps', technologies: ['MLFlow', 'S3', 'Airflow'] },
+      { category: 'Imagery', technologies: ['UAV multispectral'] },
+    ],
+    kpis: [
+      { label: 'MAPE', value: '≤5%', highlight: 'green' },
+      { label: 'Savings / 1% acc.', value: '฿15M' },
+      { label: 'Coverage', value: 'Multi-mill' },
+    ],
+    benefits: [
+      { title: 'Better sourcing', description: 'Mill scheduling aligned with forecasted volume.' },
+      { title: 'Reduced waste', description: 'Cuts forecasting-driven logistics loss.' },
+      { title: 'Explainable', description: 'Feature importances surface drivers per region.' },
+    ],
+    metricNote: 'Walk-forward validated against 5 seasons.',
+    research: {
+      problemStatement:
+        'Inaccurate volume forecasts cost an estimated ฿85M+/yr in waste and suboptimal milling schedules.',
+      objectives: ['MAPE ≤5%', 'Regional granularity', 'Explainability per forecast'],
+      scope: 'Five years of yield history + current-season features; multi-mill catchment.',
+      approach: {
+        type: 'Applied Research — Predictive Modeling',
+        framework: 'CRISP-DM + MLOps (MLFlow)',
+        description: 'LSTM + XGBoost ensemble with time-series aware validation.',
+        phases: [
+          { name: 'Data Prep', duration: '3 months', activities: ['UAV fusion', 'Feature engineering'], deliverables: ['Feature store'] },
+          { name: 'Modeling', duration: '4 months', activities: ['LSTM training', 'XGBoost tuning', 'Ensembling'], deliverables: ['Ensemble model'] },
+          { name: 'Productionize', duration: '3 months', activities: ['MLFlow registry', 'Retraining schedule'], deliverables: ['MLOps pipeline'] },
+        ],
+      },
+      dataCollection: {
+        sources: [
+          { name: 'UAV Imagery', type: 'Multispectral', description: 'Field-level biomass.', format: 'GeoTIFF' },
+          { name: 'Rainfall Network', type: 'IoT', description: '200+ stations.', format: 'Time-series' },
+          { name: 'Planting Calendar', type: 'Operational', description: 'Sowing/harvest dates.', format: 'API' },
+          { name: 'Yield History', type: 'Historical', description: '5 years of yield by plot.', format: 'Tabular' },
+        ],
+        volume: 'GBs per season per region',
+        frequency: 'Monthly model refresh',
+        preprocessing: ['Geometric alignment', 'Missing value imputation', 'Seasonality decomposition'],
+      },
+      analysisMethod: {
+        primary: 'LSTM for temporal signals',
+        secondary: 'XGBoost for tabular features',
+        tools: ['PyTorch', 'XGBoost', 'MLFlow'],
+        metrics: ['MAPE', 'RMSE', 'Bias by region'],
+      },
+      validation: {
+        method: 'Walk-forward cross-validation (time-series split)',
+        baseline: 'Naive seasonal forecast',
+        successCriteria: ['MAPE ≤5%', 'Stable bias across regions'],
+      },
+    },
+    timeline: [
+      { phase: 'Modeling', startDate: '2025-Q4', endDate: '2026-Q2', milestones: ['Ensemble v1'] },
+      { phase: 'Productionize', startDate: '2026-Q3', endDate: '2026-Q4', milestones: ['MLOps GA'] },
+    ],
+    risks: [
+      { risk: 'UAV coverage gaps', impact: 'medium', probability: 'medium', mitigation: 'Satellite fallback' },
+      { risk: 'Concept drift across seasons', impact: 'high', probability: 'medium', mitigation: 'Scheduled retraining' },
+    ],
+    budget: [{ category: 'Build + Year 1', amount: '฿15–22M' }],
+    dependsOn: [2, 4],
+    feedsInto: [],
+    relatedProjects: [4, 2],
+  },
+
+  // ========== #6 Data + AI Governance ==========
+  {
+    id: 6,
+    slug: 'data-ai-governance',
+    title: 'Data + AI Governance',
+    subtitle: 'ISO/IEC 42001 AI Management System',
+    description:
+      'Policy, controls, and audit trails bringing MAI into alignment with ISO/IEC 42001 and enterprise risk management.',
+    image: '/images/navy-data.jpg',
+    heroImage: '/images/navy-data.jpg',
+    type: 'governance',
+    businessUnit: 'corporate',
+    status: 'planning',
+    statusLabel: 'Framework Build',
+    techTags: ['ISO 42001', 'Risk Mgmt', 'Policy', 'Audit'],
+    techStack: [
+      { category: 'Standards', technologies: ['ISO/IEC 42001', 'NIST AI RMF'] },
+      { category: 'Controls', technologies: ['Model Registry', 'Bias Testing'] },
+      { category: 'Audit', technologies: ['Lineage', 'Decision Logs'] },
+    ],
+    kpis: [
+      { label: 'Cert Readiness', value: '18 mo' },
+      { label: 'Models Risk-Reviewed', value: '100%' },
+      { label: 'Audit Coverage', value: 'Full' },
+    ],
+    benefits: [
+      { title: 'Risk-managed AI', description: 'Every model passes bias & impact review.' },
+      { title: 'Auditable', description: 'End-to-end decision traceability.' },
+      { title: 'Investor confidence', description: 'Credible ESG & compliance posture.' },
+    ],
+    metricNote: 'Certification pursued with external ISO body.',
+    research: {
+      problemStatement:
+        'AI models are deployed without systematic bias testing or audit trails, creating regulatory and reputational risk.',
+      objectives: ['ISO 42001 certification readiness', '100% of models pass risk review', 'Enterprise-wide AI inventory'],
+      scope: 'All MAI AI/ML workloads and their upstream data products.',
+      approach: {
+        type: 'Policy Research — Framework Development',
+        framework: 'ISO/IEC 42001 AI Management System',
+        description: 'Gap analysis vs ISO 42001 and AI RMF, followed by maturity-based implementation.',
+        phases: [
+          { name: 'Gap Analysis', duration: '3 months', activities: ['Control mapping', 'Maturity assessment'], deliverables: ['Gap report'] },
+          { name: 'Policy', duration: '4 months', activities: ['Policy drafting', 'Committee charter'], deliverables: ['Approved policies'] },
+          { name: 'Implementation', duration: '6 months', activities: ['Control deployment', 'Training'], deliverables: ['Control library'] },
+          { name: 'Audit', duration: '5 months', activities: ['Internal audit', 'External review'], deliverables: ['Audit report'] },
+        ],
+      },
+      dataCollection: {
+        sources: [
+          { name: 'Model Inventory', type: 'Catalog', description: 'All AI/ML assets.', format: 'CMDB' },
+          { name: 'DQ Metrics', type: 'Operational', description: 'Upstream data quality.', format: 'Tabular' },
+          { name: 'Risk Register', type: 'GRC', description: 'AI-specific risks.', format: 'GRC tool' },
+        ],
+        volume: 'Documentation corpus',
+        frequency: 'Continuous',
+        preprocessing: ['Taxonomy alignment', 'Owner verification'],
+      },
+      analysisMethod: {
+        primary: 'Maturity model assessment',
+        tools: ['GRC platform', 'Policy portal'],
+        metrics: ['Control coverage', 'Residual risk', 'Audit findings'],
+      },
+      validation: {
+        method: 'Internal audit followed by external ISO certification body review',
+        baseline: 'Current maturity (informal)',
+        successCriteria: ['Certification readiness in 18 months', 'Zero high residual risks'],
+      },
+    },
+    timeline: [
+      { phase: 'Gap + Policy', startDate: '2026-Q1', endDate: '2026-Q3', milestones: ['Policies approved'] },
+      { phase: 'Audit', startDate: '2027-Q1', endDate: '2027-Q2', milestones: ['External review'] },
+    ],
+    risks: [
+      { risk: 'Policy fatigue', impact: 'medium', probability: 'medium', mitigation: 'Embed in existing workflows' },
+      { risk: 'Audit gap', impact: 'high', probability: 'low', mitigation: 'Independent advisor' },
+    ],
+    budget: [{ category: 'Year 1', amount: '฿8–12M' }],
+    dependsOn: [2],
+    feedsInto: [3],
+    relatedProjects: [2, 3],
+  },
+
+  // ========== #7 AI Sugarcane Weight ==========
+  {
+    id: 7,
+    slug: 'ai-sugarcane-weight',
+    title: 'AI Sugarcane Weight',
+    subtitle: 'Weighbridge Computer Vision + LLM Vision',
+    description:
+      'Vision models replacing manual weighbridge grading with sub-second, auditable, fraud-resistant assessment.',
+    image: '/images/factory.jpg',
+    heroImage: '/images/factory.jpg',
+    type: 'ownbuild',
+    businessUnit: 'factory',
+    status: 'active',
+    statusLabel: 'Field Trial',
+    techTags: ['YOLO v11', 'Gemma 3 VL', 'Qwen2.5-VL', 'Edge AI'],
+    techStack: [
+      { category: 'Detection', technologies: ['YOLO v11'] },
+      { category: 'LLM Vision', technologies: ['Gemma 3 VL', 'Qwen2.5-VL'] },
+      { category: 'Hardware', technologies: ['RTX 4060 Ti', 'RTX 5060'] },
+    ],
+    kpis: [
+      { label: 'Accuracy', value: '≥95%', highlight: 'green' },
+      { label: 'Latency', value: '≤200 ms' },
+      { label: 'Turnaround', value: '−40%' },
+    ],
+    benefits: [
+      { title: 'Fraud resistance', description: 'Auditable imagery reduces dispute surface.' },
+      { title: 'Throughput', description: 'Sub-second grading cuts queue time.' },
+      { title: 'Consistency', description: 'Removes inter-grader variance.' },
+    ],
+    metricNote: 'Field-trialed in blind comparison to human grading.',
+    research: {
+      problemStatement:
+        'Manual weighbridge grading is slow, subjective, and vulnerable to fraud, causing payment disputes and throughput loss.',
+      objectives: ['≥95% classification accuracy', '≤200 ms inference latency', '40% turnaround reduction'],
+      scope: 'Per-site weighbridge deployment with dual-GPU edge nodes.',
+      approach: {
+        type: 'Applied Research — Computer Vision',
+        framework: 'CRISP-DM + Edge AI Deployment',
+        description: 'YOLO detection fused with LLM Vision for descriptive grading.',
+        phases: [
+          { name: 'Data Curation', duration: '2 months', activities: ['Image labeling', 'Class balancing'], deliverables: ['Labeled corpus'] },
+          { name: 'Modeling', duration: '3 months', activities: ['YOLO training', 'VLM adaptation'], deliverables: ['Trained models'] },
+          { name: 'Edge Deployment', duration: '2 months', activities: ['GPU node setup', 'Integration with weighbridge'], deliverables: ['Edge release'] },
+          { name: 'Field Trial', duration: '3 months', activities: ['Blind comparison', 'Operator feedback'], deliverables: ['Trial report'] },
+        ],
+      },
+      dataCollection: {
+        sources: [
+          { name: 'C3 Cameras', type: 'CV', description: '1080p @30fps weighbridge cameras.', format: 'JPEG/MP4' },
+          { name: 'Weight Sensors', type: 'Scale', description: 'Ground truth weight.', format: 'Serial/API' },
+          { name: 'Grading Records', type: 'Historical', description: 'Past human grading.', format: 'Tabular' },
+        ],
+        volume: 'Hundreds of GBs per site',
+        frequency: 'Per truck transaction',
+        preprocessing: ['Deskew', 'Exposure normalization', 'Augmentation'],
+      },
+      analysisMethod: {
+        primary: 'YOLO v11 object detection',
+        secondary: 'VLM descriptive grading',
+        tools: ['Ultralytics', 'TensorRT', 'Python'],
+        metrics: ['Precision', 'Recall', 'F1', 'Latency p95'],
+      },
+      validation: {
+        method: 'Confusion matrix analysis + field trial comparison to human grading',
+        baseline: 'Human grader performance',
+        successCriteria: ['Accuracy ≥95%', 'Latency ≤200 ms'],
+      },
+    },
+    timeline: [
+      { phase: 'Trial', startDate: '2025-Q4', endDate: '2026-Q2', milestones: ['Trial closeout'] },
+      { phase: 'Rollout', startDate: '2026-Q3', endDate: '2027-Q1', milestones: ['Multi-site live'] },
+    ],
+    risks: [
+      { risk: 'Edge hardware availability', impact: 'medium', probability: 'medium', mitigation: 'Dual-vendor sourcing' },
+      { risk: 'Class imbalance', impact: 'medium', probability: 'medium', mitigation: 'Active learning loops' },
+    ],
+    budget: [{ category: 'Per site', amount: '฿3.2M' }],
+    dependsOn: [2],
+    feedsInto: [8],
+    relatedProjects: [8, 2],
+  },
+
+  // ========== #8 AI Sugarcane Dump Station ==========
+  {
+    id: 8,
+    slug: 'ai-sugarcane-dump-station',
+    title: 'AI Sugarcane Dump Station',
+    subtitle: 'Dump Inspection + Quality Regression',
+    description:
+      'Multi-view dump station vision models estimating CCS, fiber, and trash to reduce spoilage and payment disputes.',
+    image: '/images/factory.jpg',
+    heroImage: '/images/factory.jpg',
+    type: 'ownbuild',
+    businessUnit: 'factory',
+    status: 'pending',
+    statusLabel: 'Pilot',
+    techTags: ['YOLO', 'Segmentation', 'Regression', 'Edge'],
+    techStack: [
+      { category: 'Vision', technologies: ['YOLO classification', 'Segmentation'] },
+      { category: 'Quality', technologies: ['Regression models'] },
+      { category: 'Edge', technologies: ['On-site GPU'] },
+    ],
+    kpis: [
+      { label: 'Accuracy', value: '≥95%', highlight: 'green' },
+      { label: 'R² vs Lab', value: '≥0.85' },
+      { label: 'Install Time', value: '<1 wk' },
+    ],
+    benefits: [
+      { title: 'Consistent quality', description: 'Removes inter-inspector variance.' },
+      { title: 'Less spoilage', description: 'Flags borderline loads sooner.' },
+      { title: 'Solution package', description: 'Pre-configured for rapid site install.' },
+    ],
+    metricNote: 'Blind comparison — AI vs lab vs human inspector.',
+    research: {
+      problemStatement:
+        'Manual dump inspection produces inconsistent quality readings, causing spoilage and payment disputes.',
+      objectives: ['≥95% classification accuracy', 'R² ≥0.85 for quality regression vs lab', 'Install in <1 week per site'],
+      scope: 'Dump station cameras (top + side view) with quality lab reconciliation.',
+      approach: {
+        type: 'Applied Research — Computer Vision',
+        framework: 'CRISP-DM + Solution Package Design',
+        description: 'Classification + segmentation + quality regression head.',
+        phases: [
+          { name: 'Data Collection', duration: '2 months', activities: ['Multi-view capture', 'Lab alignment'], deliverables: ['Paired dataset'] },
+          { name: 'Modeling', duration: '3 months', activities: ['Classifier training', 'Regression head'], deliverables: ['Inference pipeline'] },
+          { name: 'Packaging', duration: '2 months', activities: ['Install scripts', 'Ops runbook'], deliverables: ['Solution package'] },
+        ],
+      },
+      dataCollection: {
+        sources: [
+          { name: 'Dump Cameras', type: 'CV', description: 'Top + side views.', format: 'JPEG' },
+          { name: 'Quality Lab', type: 'Analytical', description: 'CCS, fiber %, trash %.', format: 'Tabular' },
+        ],
+        volume: 'GBs per site per month',
+        frequency: 'Per truck dump',
+        preprocessing: ['Registration between views', 'Exposure normalization'],
+      },
+      analysisMethod: {
+        primary: 'YOLO classification + semantic segmentation',
+        secondary: 'Quality regression',
+        tools: ['Ultralytics', 'Scikit-learn', 'PyTorch'],
+        metrics: ['Classification accuracy', 'R²', 'MAE vs lab'],
+      },
+      validation: {
+        method: 'Blind comparison — AI vs lab vs human',
+        baseline: 'Human inspector',
+        successCriteria: ['Accuracy ≥95%', 'R² ≥0.85', 'Install <1 week'],
+      },
+    },
+    timeline: [
+      { phase: 'Pilot', startDate: '2026-Q1', endDate: '2026-Q3', milestones: ['Pilot site live'] },
+      { phase: 'Scale', startDate: '2026-Q4', endDate: '2027-Q2', milestones: ['Packaged rollout'] },
+    ],
+    risks: [
+      { risk: 'Lab reconciliation delay', impact: 'medium', probability: 'medium', mitigation: 'Parallel labeling team' },
+      { risk: 'Site variance', impact: 'medium', probability: 'high', mitigation: 'Per-site fine-tuning' },
+    ],
+    budget: [{ category: 'Per site', amount: '฿2.8M' }],
+    dependsOn: [2, 7],
+    feedsInto: [],
+    relatedProjects: [7, 2],
+  },
+
+  // ========== #9 AI APC Own Build ==========
+  {
+    id: 9,
+    slug: 'ai-apc-own-build',
+    title: 'AI APC Own Build',
+    subtitle: 'In-House Ensemble ML vs Vendor APC',
+    description:
+      'Head-to-head experiment: can an in-house ensemble match vendor APC and eliminate recurring licensing cost?',
+    image: '/images/factory.jpg',
+    heroImage: '/images/factory.jpg',
+    type: 'ownbuild',
+    businessUnit: 'factory',
+    status: 'planning',
+    statusLabel: 'Experiment',
+    techTags: ['XGBoost', 'Neural Net', 'MLOps', 'SPC'],
+    techStack: [
+      { category: 'Models', technologies: ['XGBoost', 'Neural Net ensemble'] },
+      { category: 'Historian', technologies: ['OSIsoft PI'] },
+      { category: 'Control Trial', technologies: ['A/B alternating periods'] },
+    ],
+    kpis: [
+      { label: 'vs AVEVA', value: 'within 1%', highlight: 'blue' },
+      { label: 'License Savings', value: '฿45M/yr' },
+      { label: 'Trial Length', value: '6 months' },
+    ],
+    benefits: [
+      { title: 'Cost elimination', description: 'Potential to remove recurring vendor licensing.' },
+      { title: 'IP retention', description: 'Models owned by MitrPhol.' },
+      { title: 'Data-informed decision', description: 'Produces evidence either way.' },
+    ],
+    metricNote: 'Success criterion is rigorous equivalence — not novelty.',
+    research: {
+      problemStatement:
+        'Vendor APC costs ฿45M/yr in licensing. Open question: can an in-house ML ensemble match its performance?',
+      objectives: ['Match AVEVA KPI within 1%', 'Eliminate ฿45M/yr licensing if matched', 'Produce rigorous data either way'],
+      scope: 'Same plant, same sensors as #1; alternating control periods over 6 months.',
+      approach: {
+        type: 'Experimental Research — Comparative Study',
+        framework: 'Hypothesis-Driven Experimentation',
+        description: 'Custom ML ensemble benchmarked head-to-head against vendor APC.',
+        phases: [
+          { name: 'Build', duration: '4 months', activities: ['Feature engineering', 'Ensemble training', 'Safety envelope'], deliverables: ['Candidate controller'] },
+          { name: 'Trial', duration: '6 months', activities: ['Alternating control', 'Hourly validation'], deliverables: ['Trial dataset'] },
+          { name: 'Decision', duration: '1 month', activities: ['Statistical testing', 'Exec review'], deliverables: ['Go/no-go decision'] },
+        ],
+      },
+      dataCollection: {
+        sources: [
+          { name: 'OSIsoft PI', type: 'Historian', description: 'Identical streams to #1.', format: 'PI Tags' },
+        ],
+        volume: 'Equivalent to #1',
+        frequency: '1-second sampling',
+        preprocessing: ['Same as #1 to preserve comparability'],
+      },
+      analysisMethod: {
+        primary: 'Custom ML ensemble (XGBoost + neural net)',
+        secondary: 'SPC comparison to AVEVA periods',
+        tools: ['PyTorch', 'XGBoost', 'Python'],
+        metrics: ['Steam flow CV', 'SFC', 'Constraint violations'],
+      },
+      validation: {
+        method: 'Head-to-head same plant, alternating control periods',
+        baseline: 'AVEVA APC performance',
+        successCriteria: ['Within 1% of AVEVA KPI', 'No safety incidents'],
+      },
+      ethicsAndGovernance:
+        'Trial governed by site MOC. Safety envelope enforced at DCS layer — never at ML layer alone.',
+    },
+    timeline: [
+      { phase: 'Build', startDate: '2026-Q2', endDate: '2026-Q3', milestones: ['Candidate ready'] },
+      { phase: 'Trial', startDate: '2026-Q4', endDate: '2027-Q1', milestones: ['Data-driven decision'] },
+    ],
+    risks: [
+      { risk: 'Safety incident during trial', impact: 'high', probability: 'low', mitigation: 'DCS envelope + rollback' },
+      { risk: 'Inconclusive result', impact: 'medium', probability: 'medium', mitigation: 'Pre-registered statistical test' },
+    ],
+    budget: [{ category: 'Dev + 6mo trial', amount: '฿8–12M' }],
+    dependsOn: [1, 2],
+    feedsInto: [],
+    relatedProjects: [1, 2],
+  },
+];
