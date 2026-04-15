@@ -3,22 +3,22 @@ import { GradientCard } from '@/components/ui/GradientCard';
 
 const domains = [
   {
-    image: '/images/farm-hero.jpg',
+    image: '/images/geospatial_ai.jpg',
     title: 'Geospatial AI',
     desc: 'Sentinel-2, GEE, NDVI zoning, VRT guidance, UAV fusion.',
   },
   {
-    image: '/images/factory.jpg',
+    image: '/images/industrial_ml.png',
     title: 'Industrial ML',
     desc: 'OSIsoft PI streams, APC, SPC, time-series forecasting.',
   },
   {
-    image: '/images/navy-data.jpg',
+    image: '/images/data_platform.png',
     title: 'Data Platform',
     desc: 'Medallion lakehouse, DQ gates, lineage, RLS governance.',
   },
   {
-    image: '/images/farm-field.jpg',
+    image: '/images/agentic_genai.png',
     title: 'Agentic GenAI',
     desc: 'LangChain, n8n, multi-LLM evaluation and orchestration.',
   },

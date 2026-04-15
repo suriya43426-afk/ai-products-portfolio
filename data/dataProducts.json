@@ -1,0 +1,842 @@
+[
+  {
+    "id": "farm-001",
+    "slug": "sugarcane-field-sensor-iot-data-2023-2024",
+    "title": "Sugarcane Field Sensor IoT Data 2023-2024",
+    "description": "ข้อมูลเซ็นเซอร์ IoT จากแปลงอ้อย รวมถึงอุณหภูมิ ความชื้น และค่า pH ดิน เก็บข้อมูลทุก 15 นาที",
+    "bu": "Farming",
+    "supportFunction": "Raw Material",
+    "tags": [
+      "IoT",
+      "sensor",
+      "sugarcane",
+      "agriculture"
+    ],
+    "fileCount": 3,
+    "rowCount": 245000,
+    "columnCount": 18,
+    "size": "128 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-15",
+    "usabilityScore": 9.2,
+    "downloads": 342,
+    "ownerTeam": "Farming Analytics Team",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "farm-002",
+    "slug": "crop-yield-prediction-dataset",
+    "title": "Crop Yield Prediction Dataset",
+    "description": "ข้อมูลผลผลิตอ้อยรายแปลง พร้อมปัจจัยที่เกี่ยวข้อง เช่น ปริมาณน้ำฝน ปุ๋ย และสภาพดิน",
+    "bu": "Farming",
+    "supportFunction": "Production / Operations",
+    "tags": [
+      "yield",
+      "prediction",
+      "ML",
+      "sugarcane"
+    ],
+    "fileCount": 2,
+    "rowCount": 18500,
+    "columnCount": 24,
+    "size": "45 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-11-28",
+    "usabilityScore": 8.8,
+    "downloads": 567,
+    "ownerTeam": "Agronomist Division",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "farm-003",
+    "slug": "soil-quality-analysis-by-region",
+    "title": "Soil Quality Analysis by Region",
+    "description": "ผลวิเคราะห์ดินจากพื้นที่ปลูกอ้อยทั่วประเทศ รวม pH, N-P-K, อินทรียวัตถุ",
+    "bu": "Farming",
+    "supportFunction": "R&D / Innovation",
+    "tags": [
+      "soil",
+      "analysis",
+      "chemistry",
+      "regions"
+    ],
+    "fileCount": 1,
+    "rowCount": 5200,
+    "columnCount": 15,
+    "size": "12 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-10-20",
+    "usabilityScore": 9,
+    "downloads": 189,
+    "ownerTeam": "R&D Lab",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "farm-004",
+    "slug": "drone-aerial-survey-images-metadata",
+    "title": "Drone Aerial Survey Images Metadata",
+    "description": "เมตาดาต้าจากภาพถ่ายทางอากาศโดยโดรน สำหรับติดตามสุขภาพแปลงอ้อย",
+    "bu": "Farming",
+    "supportFunction": "IT & Digital Transformation",
+    "tags": [
+      "drone",
+      "aerial",
+      "NDVI",
+      "remote sensing"
+    ],
+    "fileCount": 5,
+    "rowCount": 32000,
+    "columnCount": 12,
+    "size": "890 MB",
+    "format": "Parquet",
+    "lastUpdated": "2024-12-01",
+    "usabilityScore": 8.5,
+    "downloads": 124,
+    "ownerTeam": "Digital Agriculture",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "sugar-001",
+    "slug": "sugar-mill-daily-production-report",
+    "title": "Sugar Mill Daily Production Report",
+    "description": "รายงานการผลิตน้ำตาลรายวัน จากโรงงานทั้ง 7 แห่ง ครอบคลุมปริมาณอ้อยเข้าหีบ, ผลผลิตน้ำตาล, CCS",
+    "bu": "Sugar",
+    "supportFunction": "Production / Operations",
+    "tags": [
+      "production",
+      "daily",
+      "mill",
+      "sugar output"
+    ],
+    "fileCount": 7,
+    "rowCount": 156000,
+    "columnCount": 35,
+    "size": "210 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-18",
+    "usabilityScore": 9.5,
+    "downloads": 1024,
+    "ownerTeam": "Production Control",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "sugar-002",
+    "slug": "raw-sugar-quality-control-lab-results",
+    "title": "Raw Sugar Quality Control Lab Results",
+    "description": "ผลตรวจคุณภาพน้ำตาลดิบ ทั้ง Pol, moisture, color, grain size จาก QC Lab",
+    "bu": "Sugar",
+    "supportFunction": "Raw Material",
+    "tags": [
+      "quality",
+      "lab",
+      "testing",
+      "standards"
+    ],
+    "fileCount": 2,
+    "rowCount": 42000,
+    "columnCount": 22,
+    "size": "56 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-10",
+    "usabilityScore": 9.3,
+    "downloads": 445,
+    "ownerTeam": "QC Laboratory",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "sugar-003",
+    "slug": "equipment-maintenance-schedule-history",
+    "title": "Equipment Maintenance Schedule & History",
+    "description": "ประวัติการบำรุงรักษาเครื่องจักร และตารางซ่อมบำรุงแบบ Preventive/Predictive",
+    "bu": "Sugar",
+    "supportFunction": "Maintenance",
+    "tags": [
+      "maintenance",
+      "equipment",
+      "preventive",
+      "schedule"
+    ],
+    "fileCount": 4,
+    "rowCount": 88000,
+    "columnCount": 28,
+    "size": "95 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-11-30",
+    "usabilityScore": 8.7,
+    "downloads": 312,
+    "ownerTeam": "Engineering Dept",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "sugar-004",
+    "slug": "sugarcane-logistics-transport-tracking",
+    "title": "Sugarcane Logistics & Transport Tracking",
+    "description": "ข้อมูลการขนส่งอ้อยจากไร่สู่โรงงาน พร้อมพิกัด GPS, น้ำหนัก, เวลาเดินทาง",
+    "bu": "Sugar",
+    "supportFunction": "Logistics & Supply Chain",
+    "tags": [
+      "logistics",
+      "transport",
+      "GPS",
+      "trucking"
+    ],
+    "fileCount": 3,
+    "rowCount": 320000,
+    "columnCount": 20,
+    "size": "180 MB",
+    "format": "Parquet",
+    "lastUpdated": "2024-12-16",
+    "usabilityScore": 9.1,
+    "downloads": 678,
+    "ownerTeam": "Logistics Division",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "sugar-005",
+    "slug": "customer-order-sales-transaction",
+    "title": "Customer Order & Sales Transaction",
+    "description": "ข้อมูลการสั่งซื้อและธุรกรรมการขายน้ำตาล ทั้งในประเทศและส่งออก",
+    "bu": "Sugar",
+    "supportFunction": "Marketing & Sales",
+    "tags": [
+      "sales",
+      "orders",
+      "customers",
+      "export"
+    ],
+    "fileCount": 2,
+    "rowCount": 75000,
+    "columnCount": 18,
+    "size": "42 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-12",
+    "usabilityScore": 8.9,
+    "downloads": 534,
+    "ownerTeam": "Sales Analytics",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "bio-001",
+    "slug": "biomass-power-generation-output",
+    "title": "Biomass Power Generation Output",
+    "description": "ข้อมูลการผลิตไฟฟ้าจากชีวมวล รวมกำลังผลิต, ปริมาณเชื้อเพลิง, ประสิทธิภาพ",
+    "bu": "Biopower",
+    "supportFunction": "Production / Operations",
+    "tags": [
+      "power",
+      "biomass",
+      "electricity",
+      "generation"
+    ],
+    "fileCount": 3,
+    "rowCount": 95000,
+    "columnCount": 25,
+    "size": "78 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-14",
+    "usabilityScore": 9,
+    "downloads": 287,
+    "ownerTeam": "Power Plant Operations",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "bio-002",
+    "slug": "bagasse-biomass-fuel-inventory",
+    "title": "Bagasse & Biomass Fuel Inventory",
+    "description": "ข้อมูลปริมาณกากอ้อยและชีวมวลคงคลัง พร้อมค่าความชื้นและค่าความร้อน",
+    "bu": "Biopower",
+    "supportFunction": "Raw Material",
+    "tags": [
+      "bagasse",
+      "biomass",
+      "inventory",
+      "fuel"
+    ],
+    "fileCount": 2,
+    "rowCount": 28000,
+    "columnCount": 14,
+    "size": "18 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-11-25",
+    "usabilityScore": 8.6,
+    "downloads": 156,
+    "ownerTeam": "Fuel Management",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "bio-003",
+    "slug": "carbon-emission-environmental-monitoring",
+    "title": "Carbon Emission & Environmental Monitoring",
+    "description": "ข้อมูลการปล่อยก๊าซคาร์บอนและการตรวจวัดสิ่งแวดล้อม ตามมาตรฐาน ESG",
+    "bu": "Biopower",
+    "supportFunction": "Sustainability & ESG",
+    "tags": [
+      "carbon",
+      "emission",
+      "ESG",
+      "environment"
+    ],
+    "fileCount": 2,
+    "rowCount": 15000,
+    "columnCount": 20,
+    "size": "22 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-05",
+    "usabilityScore": 9.4,
+    "downloads": 398,
+    "ownerTeam": "ESG Team",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "fuel-001",
+    "slug": "ethanol-production-process-data",
+    "title": "Ethanol Production Process Data",
+    "description": "ข้อมูลกระบวนการผลิตเอทานอล ตั้งแต่การหมัก กลั่น จนถึงผลิตภัณฑ์สำเร็จรูป",
+    "bu": "Biofuel",
+    "supportFunction": "Production / Operations",
+    "tags": [
+      "ethanol",
+      "production",
+      "fermentation",
+      "distillation"
+    ],
+    "fileCount": 4,
+    "rowCount": 110000,
+    "columnCount": 30,
+    "size": "145 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-08",
+    "usabilityScore": 8.8,
+    "downloads": 234,
+    "ownerTeam": "Ethanol Plant",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "fuel-002",
+    "slug": "molasses-supply-pricing-data",
+    "title": "Molasses Supply & Pricing Data",
+    "description": "ข้อมูลการจัดซื้อกากน้ำตาล (Molasses) ราคา ปริมาณ และแหล่งที่มา",
+    "bu": "Biofuel",
+    "supportFunction": "Raw Material",
+    "tags": [
+      "molasses",
+      "procurement",
+      "pricing",
+      "supply"
+    ],
+    "fileCount": 1,
+    "rowCount": 8500,
+    "columnCount": 12,
+    "size": "6 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-11-20",
+    "usabilityScore": 8.2,
+    "downloads": 145,
+    "ownerTeam": "Procurement Team",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "fuel-003",
+    "slug": "biofuel-r-d-experiment-results",
+    "title": "Biofuel R&D Experiment Results",
+    "description": "ผลการทดลอง R&D สำหรับพัฒนาคุณภาพเชื้อเพลิงชีวภาพรุ่นใหม่",
+    "bu": "Biofuel",
+    "supportFunction": "R&D / Innovation",
+    "tags": [
+      "R&D",
+      "experiment",
+      "innovation",
+      "biofuel"
+    ],
+    "fileCount": 3,
+    "rowCount": 3200,
+    "columnCount": 28,
+    "size": "15 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-02",
+    "usabilityScore": 8,
+    "downloads": 89,
+    "ownerTeam": "R&D Center",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "sol-001",
+    "slug": "solimate-product-sales-analytics",
+    "title": "Solimate Product Sales Analytics",
+    "description": "ข้อมูลยอดขายผลิตภัณฑ์ Solimate แยกตามช่องทาง ภูมิภาค และประเภทลูกค้า",
+    "bu": "Solimate",
+    "supportFunction": "Marketing & Sales",
+    "tags": [
+      "sales",
+      "retail",
+      "analytics",
+      "channels"
+    ],
+    "fileCount": 2,
+    "rowCount": 65000,
+    "columnCount": 16,
+    "size": "38 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-17",
+    "usabilityScore": 9.1,
+    "downloads": 456,
+    "ownerTeam": "Solimate Marketing",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "sol-002",
+    "slug": "packaging-line-production-metrics",
+    "title": "Packaging Line Production Metrics",
+    "description": "ข้อมูลประสิทธิภาพสายการผลิตบรรจุภัณฑ์ OEE, downtime, defect rate",
+    "bu": "Solimate",
+    "supportFunction": "Production / Operations",
+    "tags": [
+      "packaging",
+      "OEE",
+      "production",
+      "efficiency"
+    ],
+    "fileCount": 2,
+    "rowCount": 48000,
+    "columnCount": 22,
+    "size": "32 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-11-28",
+    "usabilityScore": 8.4,
+    "downloads": 178,
+    "ownerTeam": "Packaging Operations",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "rgs-001",
+    "slug": "refined-sugar-export-shipment-data",
+    "title": "Refined Sugar Export Shipment Data",
+    "description": "ข้อมูลการส่งออกน้ำตาลทรายขาวบริสุทธิ์ รวมปลายทาง ปริมาณ และราคา FOB",
+    "bu": "RGS",
+    "supportFunction": "Logistics & Supply Chain",
+    "tags": [
+      "export",
+      "shipment",
+      "refined sugar",
+      "international"
+    ],
+    "fileCount": 2,
+    "rowCount": 22000,
+    "columnCount": 18,
+    "size": "28 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-11",
+    "usabilityScore": 8.9,
+    "downloads": 267,
+    "ownerTeam": "RGS Trading",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "rgs-002",
+    "slug": "global-sugar-market-price-index",
+    "title": "Global Sugar Market Price Index",
+    "description": "ดัชนีราคาน้ำตาลตลาดโลก รวม ICE #11, London #5 และราคาภายในประเทศ",
+    "bu": "RGS",
+    "supportFunction": "Finance & Treasury",
+    "tags": [
+      "price",
+      "market",
+      "index",
+      "commodity"
+    ],
+    "fileCount": 1,
+    "rowCount": 12000,
+    "columnCount": 10,
+    "size": "8 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-18",
+    "usabilityScore": 9.6,
+    "downloads": 890,
+    "ownerTeam": "Market Intelligence",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "pnp-001",
+    "slug": "particleboard-production-quality-data",
+    "title": "Particleboard Production Quality Data",
+    "description": "ข้อมูลคุณภาพการผลิตแผ่นไม้อัด ทั้งความหนาแน่น ความชื้น และแรงดัด",
+    "bu": "PNP",
+    "supportFunction": "Production / Operations",
+    "tags": [
+      "particleboard",
+      "wood",
+      "quality",
+      "manufacturing"
+    ],
+    "fileCount": 2,
+    "rowCount": 35000,
+    "columnCount": 20,
+    "size": "42 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-06",
+    "usabilityScore": 8.3,
+    "downloads": 134,
+    "ownerTeam": "PNP Quality",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "pnp-002",
+    "slug": "wood-chip-raw-material-sourcing",
+    "title": "Wood Chip Raw Material Sourcing",
+    "description": "ข้อมูลแหล่งวัตถุดิบไม้สับ ปริมาณ คุณภาพ และต้นทุน",
+    "bu": "PNP",
+    "supportFunction": "Raw Material",
+    "tags": [
+      "wood chip",
+      "sourcing",
+      "raw material",
+      "forestry"
+    ],
+    "fileCount": 1,
+    "rowCount": 9800,
+    "columnCount": 14,
+    "size": "7 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-11-15",
+    "usabilityScore": 7.8,
+    "downloads": 67,
+    "ownerTeam": "PNP Procurement",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "hr-001",
+    "slug": "employee-skills-training-records",
+    "title": "Employee Skills & Training Records",
+    "description": "ข้อมูลทักษะพนักงานและประวัติการอบรม ครอบคลุมทุก BU",
+    "bu": "Other",
+    "supportFunction": "Human Resources (HR)",
+    "tags": [
+      "HR",
+      "training",
+      "skills",
+      "employee"
+    ],
+    "fileCount": 2,
+    "rowCount": 28000,
+    "columnCount": 16,
+    "size": "35 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-09",
+    "usabilityScore": 8.1,
+    "downloads": 223,
+    "ownerTeam": "HR Analytics",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "fin-001",
+    "slug": "consolidated-financial-statements-data",
+    "title": "Consolidated Financial Statements Data",
+    "description": "ข้อมูลงบการเงินรวม P&L, Balance Sheet, Cash Flow รายเดือน",
+    "bu": "Other",
+    "supportFunction": "Accounting",
+    "tags": [
+      "finance",
+      "accounting",
+      "statements",
+      "consolidation"
+    ],
+    "fileCount": 3,
+    "rowCount": 15000,
+    "columnCount": 25,
+    "size": "18 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-13",
+    "usabilityScore": 8.7,
+    "downloads": 356,
+    "ownerTeam": "Finance Division",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "it-001",
+    "slug": "enterprise-system-integration-log",
+    "title": "Enterprise System Integration Log",
+    "description": "ข้อมูล Log การเชื่อมต่อระหว่างระบบ ERP, MES, SCADA และ IoT Platform",
+    "bu": "Other",
+    "supportFunction": "IT & Digital Transformation",
+    "tags": [
+      "IT",
+      "integration",
+      "API",
+      "system log"
+    ],
+    "fileCount": 5,
+    "rowCount": 520000,
+    "columnCount": 12,
+    "size": "340 MB",
+    "format": "Parquet",
+    "lastUpdated": "2024-12-18",
+    "usabilityScore": 7.5,
+    "downloads": 98,
+    "ownerTeam": "IT Infrastructure",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "esg-001",
+    "slug": "water-usage-recycling-report",
+    "title": "Water Usage & Recycling Report",
+    "description": "ข้อมูลการใช้น้ำและการรีไซเคิลน้ำในกระบวนการผลิตทุกโรงงาน",
+    "bu": "Sugar",
+    "supportFunction": "Sustainability & ESG",
+    "tags": [
+      "water",
+      "recycling",
+      "sustainability",
+      "usage"
+    ],
+    "fileCount": 2,
+    "rowCount": 18000,
+    "columnCount": 15,
+    "size": "14 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-07",
+    "usabilityScore": 9.2,
+    "downloads": 412,
+    "ownerTeam": "Sustainability Office",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "sugar-006",
+    "slug": "warehouse-inventory-management",
+    "title": "Warehouse Inventory Management",
+    "description": "ข้อมูลคลังสินค้าน้ำตาล ปริมาณคงเหลือ การเคลื่อนไหว FIFO",
+    "bu": "Sugar",
+    "supportFunction": "Logistics & Supply Chain",
+    "tags": [
+      "warehouse",
+      "inventory",
+      "FIFO",
+      "stock"
+    ],
+    "fileCount": 2,
+    "rowCount": 95000,
+    "columnCount": 18,
+    "size": "58 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-15",
+    "usabilityScore": 8.5,
+    "downloads": 289,
+    "ownerTeam": "Warehouse Ops",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "farm-005",
+    "slug": "weather-station-historical-data",
+    "title": "Weather Station Historical Data",
+    "description": "ข้อมูลสภาพอากาศจากสถานีตรวจวัดในเขตปลูกอ้อย อุณหภูมิ ฝน ลม ความชื้น",
+    "bu": "Farming",
+    "supportFunction": "Raw Material",
+    "tags": [
+      "weather",
+      "climate",
+      "station",
+      "historical"
+    ],
+    "fileCount": 1,
+    "rowCount": 180000,
+    "columnCount": 10,
+    "size": "65 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-18",
+    "usabilityScore": 9,
+    "downloads": 445,
+    "ownerTeam": "Agri-Met Team",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "sugar-007",
+    "slug": "energy-consumption-by-production-line",
+    "title": "Energy Consumption by Production Line",
+    "description": "ข้อมูลการใช้พลังงานไฟฟ้าและไอน้ำแยกตามสายการผลิต",
+    "bu": "Sugar",
+    "supportFunction": "Production / Operations",
+    "tags": [
+      "energy",
+      "consumption",
+      "steam",
+      "electricity"
+    ],
+    "fileCount": 2,
+    "rowCount": 72000,
+    "columnCount": 16,
+    "size": "48 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-10",
+    "usabilityScore": 8.8,
+    "downloads": 321,
+    "ownerTeam": "Energy Management",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "bio-004",
+    "slug": "boiler-performance-steam-data",
+    "title": "Boiler Performance & Steam Data",
+    "description": "ข้อมูลประสิทธิภาพหม้อไอน้ำ อุณหภูมิ ความดัน และอัตราการผลิตไอน้ำ",
+    "bu": "Biopower",
+    "supportFunction": "Maintenance",
+    "tags": [
+      "boiler",
+      "steam",
+      "performance",
+      "monitoring"
+    ],
+    "fileCount": 3,
+    "rowCount": 54000,
+    "columnCount": 20,
+    "size": "42 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-11-22",
+    "usabilityScore": 8.4,
+    "downloads": 167,
+    "ownerTeam": "Boiler Engineering",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  },
+  {
+    "id": "fuel-004",
+    "slug": "ethanol-distribution-network",
+    "title": "Ethanol Distribution Network",
+    "description": "ข้อมูลเครือข่ายการจัดจำหน่ายเอทานอล จุดส่งมอบ ปริมาณ และเส้นทาง",
+    "bu": "Biofuel",
+    "supportFunction": "Logistics & Supply Chain",
+    "tags": [
+      "distribution",
+      "ethanol",
+      "network",
+      "delivery"
+    ],
+    "fileCount": 1,
+    "rowCount": 15000,
+    "columnCount": 14,
+    "size": "10 MB",
+    "format": "CSV",
+    "lastUpdated": "2024-12-03",
+    "usabilityScore": 8,
+    "downloads": 112,
+    "ownerTeam": "Distribution Center",
+    "owner": {
+      "name": "Suriya Chayatummagoon",
+      "email": "suriyachay@mitrphol.com"
+    },
+    "status": "published"
+  }
+]

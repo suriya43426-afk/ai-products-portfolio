@@ -1,24 +1,26 @@
-import { projects } from '@/data/projects';
+import { projectsStore } from './projectsStore';
 import type { ProjectData } from '@/types/project';
 
-export function getAllProjects(): ProjectData[] {
-  return projects;
+export async function getAllProjects(): Promise<ProjectData[]> {
+  return projectsStore.list();
 }
 
-export function getProjectBySlug(slug: string): ProjectData | undefined {
-  return projects.find((p) => p.slug === slug);
+export async function getProjectBySlug(slug: string): Promise<ProjectData | undefined> {
+  return projectsStore.bySlug(slug);
 }
 
-export function getProjectById(id: number): ProjectData | undefined {
-  return projects.find((p) => p.id === id);
+export async function getProjectById(id: number): Promise<ProjectData | undefined> {
+  return projectsStore.byId(id);
 }
 
-export function getProjectsByBu(bu: 'farm' | 'factory' | 'corporate'): ProjectData[] {
-  return projects.filter((p) => p.businessUnit === bu).sort((a, b) => a.id - b.id);
+export async function getProjectsByBu(bu: 'farm' | 'factory' | 'corporate'): Promise<ProjectData[]> {
+  const all = await projectsStore.list();
+  return all.filter((p) => p.businessUnit === bu).sort((a, b) => a.id - b.id);
 }
 
-export function getRelatedProjects(project: ProjectData): ProjectData[] {
+export async function getRelatedProjects(project: ProjectData): Promise<ProjectData[]> {
+  const all = await projectsStore.list();
   return project.relatedProjects
-    .map((id) => getProjectById(id))
+    .map((id) => all.find((p) => p.id === id))
     .filter((p): p is ProjectData => !!p);
 }

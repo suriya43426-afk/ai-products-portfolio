@@ -5,8 +5,8 @@ import { StatusBadge } from '@/components/ui/StatusBadge';
 import { getRelatedProjects } from '@/lib/projects';
 import type { ProjectData } from '@/types/project';
 
-export function RelatedProjects({ project }: { project: ProjectData }) {
-  const related = getRelatedProjects(project);
+export async function RelatedProjects({ project }: { project: ProjectData }) {
+  const related = await getRelatedProjects(project);
   if (related.length === 0) return null;
   return (
     <SectionBlock id="related" number="09" title="Related Projects">

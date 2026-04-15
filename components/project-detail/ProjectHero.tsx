@@ -7,7 +7,7 @@ import type { ProjectData } from '@/types/project';
 
 export function ProjectHero({ project }: { project: ProjectData }) {
   return (
-    <section className="relative isolate overflow-hidden pt-[68px] text-white">
+    <section className="relative isolate overflow-hidden pt-[116px] text-white">
       <div className="absolute inset-0 -z-10">
         <Image src={project.heroImage} alt={project.title} fill priority className="object-cover" sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-b from-navy-900/80 via-navy-900/75 to-navy-900/95" />

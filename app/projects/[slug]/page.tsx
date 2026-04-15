@@ -10,13 +10,12 @@ import { ExpectedOutcomes } from '@/components/project-detail/ExpectedOutcomes';
 import { Timeline } from '@/components/project-detail/Timeline';
 import { RiskMatrix } from '@/components/project-detail/RiskMatrix';
 import { BudgetSummary } from '@/components/project-detail/BudgetSummary';
+import { ResearchPaper } from '@/components/project-detail/ResearchPaper';
 import { RelatedProjects } from '@/components/project-detail/RelatedProjects';
 import { Sidebar } from '@/components/project-detail/Sidebar';
 import { getAllProjects, getProjectBySlug } from '@/lib/projects';
 
-export function generateStaticParams() {
-  return getAllProjects().map((p) => ({ slug: p.slug }));
-}
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({
   params,
@@ -24,7 +23,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const project = await getProjectBySlug(slug);
   if (!project) return { title: 'Project not found' };
   return {
     title: `${project.title} — MAI`,
@@ -38,8 +37,19 @@ export default async function ProjectDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const project = await getProjectBySlug(slug);
   if (!project) notFound();
+
+  const all = await getAllProjects();
+  const byId = (id: number) => all.find((p) => p.id === id);
+  const depends = project.dependsOn
+    .map(byId)
+    .filter(Boolean)
+    .map((p) => ({ id: p!.id, slug: p!.slug, title: p!.title }));
+  const feeds = project.feedsInto
+    .map(byId)
+    .filter(Boolean)
+    .map((p) => ({ id: p!.id, slug: p!.slug, title: p!.title }));
 
   return (
     <>
@@ -57,7 +67,7 @@ export default async function ProjectDetailPage({
       <div className="bg-slate-50">
         <div className="mx-auto max-w-7xl px-6 py-10 md:px-12 md:py-16">
           <div className="grid gap-8 lg:grid-cols-[260px_1fr]">
-            <Sidebar project={project} />
+            <Sidebar project={project} depends={depends} feeds={feeds} />
             <div>
               <ResearchOverview project={project} />
               <Methodology project={project} />
@@ -67,6 +77,7 @@ export default async function ProjectDetailPage({
               <Timeline project={project} />
               <RiskMatrix project={project} />
               <BudgetSummary project={project} />
+              <ResearchPaper project={project} />
               <RelatedProjects project={project} />
             </div>
           </div>

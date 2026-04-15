@@ -9,8 +9,10 @@ export const metadata: Metadata = {
   description: 'Search MitrPhol AI’s portfolio of nine AI products.',
 };
 
-export default function ProductsPage() {
-  const projects = getAllProjects();
+export const dynamic = 'force-dynamic';
+
+export default async function ProductsPage() {
+  const projects = await getAllProjects();
   return (
     <>
       <Navbar />

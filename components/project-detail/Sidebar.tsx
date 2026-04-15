@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import type { ProjectData } from '@/types/project';
-import { getProjectById } from '@/lib/projects';
+
+type RelLink = { id: number; slug: string; title: string };
 
 const NAV = [
   { href: '#overview', label: 'Overview' },
@@ -14,13 +15,19 @@ const NAV = [
   { href: '#timeline', label: 'Timeline' },
   { href: '#risks', label: 'Risks' },
   { href: '#budget', label: 'Budget' },
+  { href: '#paper', label: 'Research Paper' },
   { href: '#related', label: 'Related' },
 ];
 
-export function Sidebar({ project }: { project: ProjectData }) {
-  const depends = project.dependsOn.map(getProjectById).filter(Boolean) as ProjectData[];
-  const feeds = project.feedsInto.map(getProjectById).filter(Boolean) as ProjectData[];
-
+export function Sidebar({
+  project,
+  depends,
+  feeds,
+}: {
+  project: ProjectData;
+  depends: RelLink[];
+  feeds: RelLink[];
+}) {
   return (
     <aside className="sticky top-24 hidden self-start lg:block">
       <div className="rounded-2xl border border-slate-200 bg-white p-5">

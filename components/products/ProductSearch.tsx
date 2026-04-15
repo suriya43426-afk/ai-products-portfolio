@@ -50,7 +50,7 @@ export function ProductSearch({ projects }: { projects: ProjectData[] }) {
   return (
     <>
       {/* Search hero */}
-      <section className="bg-gradient-to-b from-navy-900 to-navy-800 pt-[68px] text-white">
+      <section className="bg-gradient-to-b from-navy-900 to-navy-800 pt-[116px] text-white">
         <div className="mx-auto max-w-5xl px-6 py-14 md:px-12 md:py-20">
           <div className="text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs uppercase tracking-widest text-blue-200 backdrop-blur">

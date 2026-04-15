@@ -121,4 +121,8 @@ export interface ProjectData {
   dependsOn: number[];
   feedsInto: number[];
   relatedProjects: number[];
+
+  // Optional admin-managed content
+  researchHtml?: string;
+  paperPdf?: string;
 }
