@@ -3,10 +3,8 @@ import { Footer } from '@/components/layout/Footer';
 import { HeroSection } from '@/components/landing/HeroSection';
 import { ParentStrip } from '@/components/landing/ParentStrip';
 import { VisionMission } from '@/components/landing/VisionMission';
-import { BuTabsSection } from '@/components/landing/BuTabsSection';
-import { Expertise } from '@/components/landing/Expertise';
-import { TractionGrid } from '@/components/landing/TractionGrid';
-import { ContactSection } from '@/components/landing/ContactSection';
+import { BuStackedSections } from '@/components/landing/BuStackedSections';
+import { MainProductsGrid } from '@/components/landing/MainProductsGrid';
 import { getProjectsByBu } from '@/lib/projects';
 
 export default async function Home() {
@@ -23,10 +21,8 @@ export default async function Home() {
         <HeroSection />
         <ParentStrip />
         <VisionMission />
-        <BuTabsSection projectsByBu={{ farm, factory, corporate }} />
-        <Expertise />
-        <TractionGrid />
-        <ContactSection />
+        <MainProductsGrid />
+        <BuStackedSections projectsByBu={{ farm, factory, corporate }} />
       </main>
       <Footer />
     </>

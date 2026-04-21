@@ -3,7 +3,7 @@ import type { ProjectData } from '@/types/project';
 
 export function Timeline({ project }: { project: ProjectData }) {
   return (
-    <SectionBlock id="timeline" number="06" title="Timeline">
+    <SectionBlock id="timeline" number="07" title="Timeline">
       <div className="relative space-y-5 border-l-2 border-slate-200 pl-6">
         {project.timeline.map((p, i) => (
           <div key={i} className="relative">

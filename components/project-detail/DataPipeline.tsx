@@ -4,7 +4,7 @@ import type { ProjectData } from '@/types/project';
 export function DataPipeline({ project }: { project: ProjectData }) {
   const { dataCollection, analysisMethod } = project.research;
   return (
-    <SectionBlock id="data" number="04" title="Data Pipeline">
+    <SectionBlock id="data" number="05" title="Data Pipeline">
       <div>
         <div className="text-xs font-semibold uppercase tracking-widest text-slate-500">Data Sources</div>
         <div className="mt-3 overflow-hidden rounded-2xl border border-slate-200">

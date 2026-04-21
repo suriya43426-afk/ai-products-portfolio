@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { TechPill } from '@/components/ui/TechPill';
-import { BU_CONFIG, TYPE_LABEL } from '@/lib/constants';
+import { TYPE_LABEL } from '@/lib/constants';
 import type { ProjectData } from '@/types/project';
 import { useLang } from '@/lib/i18n';
 

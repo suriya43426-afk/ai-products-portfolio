@@ -61,9 +61,13 @@ export function ProjectList({ initial }: { initial: ProjectData[] }) {
               </td>
               <td className="px-4 py-3 text-xs text-slate-600">
                 <div className="flex flex-wrap gap-1.5">
-                  {p.paperPdf && <span className="rounded-full bg-blue-50 px-2 py-0.5 text-blue-700">PDF</span>}
-                  {p.researchHtml && <span className="rounded-full bg-green/10 px-2 py-0.5 text-green">HTML</span>}
-                  {!p.paperPdf && !p.researchHtml && <span className="text-slate-400">—</span>}
+                  {p.papers && p.papers.length > 0 ? (
+                    <span className="rounded-full bg-blue-50 px-2 py-0.5 text-blue-700">
+                      {p.papers.length} paper{p.papers.length === 1 ? '' : 's'}
+                    </span>
+                  ) : (
+                    <span className="text-slate-400">—</span>
+                  )}
                 </div>
               </td>
               <td className="px-4 py-3">

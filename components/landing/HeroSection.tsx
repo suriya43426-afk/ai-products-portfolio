@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 const pillars = [
   {
@@ -20,10 +19,10 @@ const pillars = [
 ];
 
 const kpis = [
-  { value: '9', label: 'AI Projects' },
-  { value: '3', label: 'Business Units' },
-  { value: '฿500M+', label: 'Pipeline Value' },
-  { value: '1.2M', label: 'Growers Served' },
+  { value: '4', label: 'Tech Domains' },
+  { value: '14+', label: 'Models in Eval' },
+  { value: '7', label: 'Papers on File' },
+  { value: '1 Gold', label: 'Shared Data Zone' },
 ];
 
 export function HeroSection() {
@@ -41,47 +40,30 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-navy-900/70 via-navy-900/35 to-navy-900/80" />
       </div>
 
-      {/* Headline block */}
       <div className="mx-auto max-w-7xl px-6 pt-[160px] pb-16 md:px-12 md:pt-[200px] md:pb-20">
         <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-200">
           <span className="h-px w-8 bg-blue-300/60" />
-          MitrPhol AI · Center of Excellence
+          Deep Tech Journey
         </span>
+
         <h1 className="mt-5 max-w-4xl font-serif text-4xl leading-[1.1] md:text-6xl lg:text-7xl">
-          Applied AI at the scale of a 79-year industrial group.
+          Methodology, progress, and published papers — read the work.
         </h1>
-        <p className="mt-6 max-w-xl text-base text-slate-300 md:text-lg">
-          A deep-tech portfolio of nine AI products spanning farm, factory, and corporate data — built to compound
-          returns across MitrPhol&apos;s operations.
+        <p className="mt-6 max-w-2xl text-base text-white md:text-lg">
+          Model architectures, training protocols, evaluation metrics, and version-controlled research
+          artifacts across MitrPhol&apos;s AI portfolio.
         </p>
 
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link
-            href="#portfolio"
-            className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy-900 hover:bg-slate-100"
-          >
-            View Portfolio
-          </Link>
-          <Link
-            href="#contact"
-            className="rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
-          >
-            Contact Us
-          </Link>
-        </div>
-
-        {/* KPI strip — single line, refined */}
         <div className="mt-16 flex flex-wrap items-end gap-x-12 gap-y-6 border-t border-white/10 pt-8">
           {kpis.map((k) => (
             <div key={k.label}>
               <div className="font-serif text-3xl leading-none text-white md:text-4xl">{k.value}</div>
-              <div className="mt-2 text-[11px] uppercase tracking-[0.2em] text-slate-400">{k.label}</div>
+              <div className="mt-2 text-[11px] uppercase tracking-[0.2em] text-white">{k.label}</div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Pillar strip — overlapping into next section, light bg below */}
       <div className="relative mx-auto max-w-7xl px-6 pb-16 md:px-12 md:pb-24">
         <div className="grid gap-4 md:grid-cols-3">
           {pillars.map((p) => (

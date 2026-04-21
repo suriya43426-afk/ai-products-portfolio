@@ -3,7 +3,7 @@ import type { ProjectData } from '@/types/project';
 
 export function BudgetSummary({ project }: { project: ProjectData }) {
   return (
-    <SectionBlock id="budget" number="08" title="Budget Summary">
+    <SectionBlock id="budget" number="09" title="Budget Summary">
       <div className="grid gap-3 md:grid-cols-2">
         {project.budget.map((b) => (
           <div key={b.category} className="rounded-2xl border border-slate-200 bg-white p-5">

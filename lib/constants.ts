@@ -1,18 +1,9 @@
-import type { BusinessUnit, ProjectStatus, ProjectType } from '@/types/project';
+import type { ProjectStatus, ProjectType } from '@/types/project';
 
 export const NAV_ITEMS = [
   { href: '/#about', label: 'About' },
   { href: '/#portfolio', label: 'Portfolio' },
-  { href: '/#expertise', label: 'Expertise' },
-  { href: '/#traction', label: 'Traction' },
-  { href: '/#contact', label: 'Contact' },
 ];
-
-export const BU_CONFIG: Record<BusinessUnit, { label: string; tone: 'white' | 'blue' | 'navy' }> = {
-  farm: { label: 'Smart Agriculture', tone: 'white' },
-  factory: { label: 'Smart Manufacturing', tone: 'blue' },
-  corporate: { label: 'AI & Data Governance', tone: 'navy' },
-};
 
 export const STATUS_CONFIG: Record<
   ProjectStatus,

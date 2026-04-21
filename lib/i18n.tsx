@@ -9,10 +9,6 @@ type Dict = {
     about: string;
     portfolio: string;
     products: string;
-    dataProducts: string;
-    expertise: string;
-    traction: string;
-    contact: string;
   };
   hero: {
     eyebrow: string;
@@ -43,10 +39,6 @@ const en: Dict = {
     about: 'About',
     portfolio: 'Portfolio',
     products: 'AI Products',
-    dataProducts: 'Data Products',
-    expertise: 'Expertise',
-    traction: 'Traction',
-    contact: 'Contact',
   },
   hero: {
     eyebrow: 'MitrPhol AI · Center of Excellence',
@@ -78,10 +70,6 @@ const th: Dict = {
     about: 'เกี่ยวกับเรา',
     portfolio: 'พอร์ตโฟลิโอ',
     products: 'AI Products',
-    dataProducts: 'Data Products',
-    expertise: 'ความเชี่ยวชาญ',
-    traction: 'ผลงาน',
-    contact: 'ติดต่อเรา',
   },
   hero: {
     eyebrow: 'MitrPhol AI · ศูนย์ความเป็นเลิศด้าน AI',

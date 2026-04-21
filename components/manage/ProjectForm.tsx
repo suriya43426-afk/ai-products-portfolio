@@ -2,8 +2,9 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import type { ProjectData } from '@/types/project';
+import type { ProjectData, PaperRevision } from '@/types/project';
 import { FileUpload } from './FileUpload';
+import { PapersManager } from './PapersManager';
 import { TYPE_LABEL } from '@/lib/constants';
 
 type Mode = 'create' | 'edit';
@@ -23,7 +24,6 @@ const emptyProject: ProjectData = {
   techTags: [],
   techStack: [],
   kpis: [],
-  benefits: [],
   metricNote: '',
   research: {
     problemStatement: '',
@@ -59,9 +59,9 @@ export function ProjectForm({ mode, initial }: { mode: Mode; initial?: ProjectDa
   const router = useRouter();
   const seed = initial ?? emptyProject;
   const [form, setForm] = useState<ProjectData>(seed);
+  const [papers, setPapers] = useState<PaperRevision[]>(seed.papers ?? []);
   const [techStackJson, setTechStackJson] = useState(JSON.stringify(seed.techStack, null, 2));
   const [kpisJson, setKpisJson] = useState(JSON.stringify(seed.kpis, null, 2));
-  const [benefitsJson, setBenefitsJson] = useState(JSON.stringify(seed.benefits, null, 2));
   const [researchJson, setResearchJson] = useState(JSON.stringify(seed.research, null, 2));
   const [timelineJson, setTimelineJson] = useState(JSON.stringify(seed.timeline, null, 2));
   const [risksJson, setRisksJson] = useState(JSON.stringify(seed.risks, null, 2));
@@ -82,11 +82,11 @@ export function ProjectForm({ mode, initial }: { mode: Mode; initial?: ProjectDa
         ...form,
         techStack: JSON.parse(techStackJson),
         kpis: JSON.parse(kpisJson),
-        benefits: JSON.parse(benefitsJson),
         research: JSON.parse(researchJson),
         timeline: JSON.parse(timelineJson),
         risks: JSON.parse(risksJson),
         budget: JSON.parse(budgetJson),
+        papers,
       };
       const url = mode === 'create' ? '/api/projects' : `/api/projects/${seed.slug}`;
       const method = mode === 'create' ? 'POST' : 'PUT';
@@ -218,19 +218,9 @@ export function ProjectForm({ mode, initial }: { mode: Mode; initial?: ProjectDa
         </div>
       </Section>
 
-      {/* Research Paper */}
-      <Section title="Research Paper & HTML">
-        <div className="space-y-5">
-          <FileUpload kind="pdf" label="Reference Paper (PDF)" value={form.paperPdf} onChange={(v) => set('paperPdf', v)} />
-          <Field label="Research HTML (rendered raw in detail page)" full>
-            <textarea
-              value={form.researchHtml ?? ''}
-              onChange={(e) => set('researchHtml', e.target.value)}
-              className="field min-h-[220px] font-mono text-xs"
-              placeholder="<h2>Abstract</h2><p>...</p>"
-            />
-          </Field>
-        </div>
+      {/* Papers */}
+      <Section title="Papers">
+        <PapersManager value={papers} onChange={setPapers} />
       </Section>
 
       {/* Relationships */}
@@ -271,7 +261,6 @@ export function ProjectForm({ mode, initial }: { mode: Mode; initial?: ProjectDa
         <div className="grid gap-5 md:grid-cols-2">
           <JsonField label="techStack" value={techStackJson} onChange={setTechStackJson} />
           <JsonField label="kpis" value={kpisJson} onChange={setKpisJson} />
-          <JsonField label="benefits" value={benefitsJson} onChange={setBenefitsJson} />
           <JsonField label="timeline" value={timelineJson} onChange={setTimelineJson} />
           <JsonField label="risks" value={risksJson} onChange={setRisksJson} />
           <JsonField label="budget" value={budgetJson} onChange={setBudgetJson} />

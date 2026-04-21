@@ -4,7 +4,7 @@ import type { ProjectData } from '@/types/project';
 export function ResearchOverview({ project }: { project: ProjectData }) {
   const { research } = project;
   return (
-    <SectionBlock id="overview" number="01" title="Research Overview">
+    <SectionBlock id="overview" number="01" title="Introduction">
       <div className="grid gap-8 md:grid-cols-[1fr_1fr]">
         <div>
           <div className="text-xs font-semibold uppercase tracking-widest text-slate-500">Problem Statement</div>

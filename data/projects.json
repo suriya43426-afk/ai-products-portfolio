@@ -54,20 +54,6 @@
         "value": "3 years"
       }
     ],
-    "benefits": [
-      {
-        "title": "Stable steam output",
-        "description": "Minimizes boiler excursions via closed-loop control."
-      },
-      {
-        "title": "Fuel savings",
-        "description": "Optimized fuel-to-steam ratio over manual operation."
-      },
-      {
-        "title": "Operator support",
-        "description": "SPC dashboards reduce cognitive load on shift teams."
-      }
-    ],
     "metricNote": "Est. figures pending post-deployment validation.",
     "research": {
       "problemStatement": "Biopower boiler operations rely on manual adjustments that lead to suboptimal fuel-to-steam ratios and process variability.",
@@ -310,20 +296,6 @@
         "value": "100%"
       }
     ],
-    "benefits": [
-      {
-        "title": "Single source of truth",
-        "description": "Deduplicated, governed Gold Zone for analytics."
-      },
-      {
-        "title": "Faster reports",
-        "description": "Dashboards refresh in minutes, not hours."
-      },
-      {
-        "title": "Traceable lineage",
-        "description": "End-to-end lineage from source to KPI."
-      }
-    ],
     "metricNote": "Coverage scaled progressively BU by BU.",
     "research": {
       "problemStatement": "Enterprise data is siloed across SAP, PI, satellite, and factory systems with no single source of truth, blocking downstream AI workloads.",
@@ -560,20 +532,6 @@
         "value": "85%"
       }
     ],
-    "benefits": [
-      {
-        "title": "FTE leverage",
-        "description": "Frees analysts from repetitive lookups and report prep."
-      },
-      {
-        "title": "Consistent answers",
-        "description": "RAG grounds responses in Gold Zone data."
-      },
-      {
-        "title": "Model-agnostic",
-        "description": "Evaluation framework picks the right LLM per task."
-      }
-    ],
     "metricNote": "Pilots across 3 workflows; scaling on outcome.",
     "research": {
       "problemStatement": "12+ FTEs engaged in repetitive knowledge work with high variance in output quality.",
@@ -782,20 +740,6 @@
         "value": "฿120M"
       }
     ],
-    "benefits": [
-      {
-        "title": "Data-driven planting",
-        "description": "Decisions based on NDVI and soil instead of intuition."
-      },
-      {
-        "title": "Input efficiency",
-        "description": "~15% fertilizer reduction through VRT."
-      },
-      {
-        "title": "Scalable",
-        "description": "Covers millions of rai through satellite coverage."
-      }
-    ],
     "metricNote": "Uplift measured against neighboring control plots.",
     "research": {
       "problemStatement": "Planting decisions rely on experience rather than data, leaving yield below agronomic potential.",
@@ -978,6 +922,127 @@
     "relatedProjects": [
       5,
       2
+    ],
+    "abstract": "Precision Farming integrates Sentinel-2 multispectral imagery, UAV-based observations, and ground IoT telemetry to generate variable-rate planting and fertilization recommendations across MitrPhol's 1.2 million rai contract farm network. A CNN-XGBoost ensemble delivers plot-level yield forecasts with MAPE below 8%, while a geospatial zoning pipeline drives in-season VRT guidance. The system has been deployed in production for two crushing seasons and is associated with an 8% average yield uplift over manual-practice baselines.",
+    "progress": {
+      "percent": 72,
+      "stage": "In Production",
+      "milestone": "v2 zoning model rolled to 6 provinces",
+      "trl": 8,
+      "updatedAt": "2026-03-10"
+    },
+    "aiMethodology": {
+      "problemFraming": "Farm-level recommendations are constrained by sparse ground truth and heterogeneous soil conditions. We frame it as a joint spatial-temporal regression plus zone classification problem over contract farm polygons.",
+      "data": {
+        "sources": [
+          "Sentinel-2 L2A",
+          "UAV multispectral",
+          "Ground IoT (soil moisture, EC)",
+          "Farm registry"
+        ],
+        "volume": "18 TB raw · 2.1 TB Gold",
+        "sampling": "10m/pixel · 5-day revisit + weekly UAV"
+      },
+      "features": [
+        "Cloud-mask + BRDF normalization",
+        "NDVI / NDRE / NDWI / SAVI indices",
+        "Time-series Savitzky-Golay smoothing",
+        "Soil unit one-hot + texture features",
+        "Weather anomalies (±30d rolling)"
+      ],
+      "model": {
+        "family": "CNN feature extractor + XGBoost ensemble",
+        "architecture": "ResNet-18 spatial encoder → XGBoost yield regressor; K-Means for zoning",
+        "hyperparams": {
+          "n_estimators": "800",
+          "max_depth": "8",
+          "learning_rate": "0.05",
+          "k_zones": "5"
+        }
+      },
+      "training": {
+        "protocol": "Walk-forward 2019–2024 with season-wise validation; blocked K-fold to prevent leakage across fields.",
+        "split": "Train 2019–2022 · Val 2023 · Test 2024",
+        "hardware": "4×A100 (40GB) · 3h wall clock"
+      },
+      "evaluation": {
+        "metrics": [
+          {
+            "name": "MAPE",
+            "value": "7.6%",
+            "baseline": "14.2% (linear)"
+          },
+          {
+            "name": "R²",
+            "value": "0.81",
+            "baseline": "0.52"
+          },
+          {
+            "name": "Zone F1",
+            "value": "0.78",
+            "baseline": "—"
+          }
+        ],
+        "notes": "Baseline is a parcel-level linear model on NDVI mean + soil class."
+      },
+      "deployment": {
+        "topology": "Batch scoring on Databricks · results pushed to OneAgriPro via API",
+        "monitoring": [
+          "Data drift (PSI)",
+          "Prediction drift",
+          "Per-region MAPE dashboard"
+        ]
+      },
+      "limitations": [
+        "Cloud-heavy monsoon windows reduce observation density",
+        "Transferability to new geographies needs local fine-tune"
+      ]
+    },
+    "references": [
+      {
+        "id": "ref-1",
+        "citation": "K. He, X. Zhang, S. Ren, and J. Sun, \"Deep Residual Learning for Image Recognition,\" in Proc. IEEE CVPR, 2016, pp. 770-778.",
+        "url": "https://arxiv.org/abs/1512.03385"
+      },
+      {
+        "id": "ref-2",
+        "citation": "T. Chen and C. Guestrin, \"XGBoost: A Scalable Tree Boosting System,\" in Proc. ACM KDD, 2016, pp. 785-794.",
+        "url": "https://arxiv.org/abs/1603.02754"
+      },
+      {
+        "id": "ref-3",
+        "citation": "ESA, \"Sentinel-2 User Handbook,\" European Space Agency, Tech. Rep. ESA-SP-1322/2, 2015."
+      },
+      {
+        "id": "ref-4",
+        "citation": "MitrPhol AI Research, \"Farm-level Yield Forecasting for Sugarcane,\" Internal Technical Report MAI-TR-2025-04, 2025."
+      }
+    ],
+    "papers": [
+      {
+        "version": "v2.1.0",
+        "uploadedAt": "2026-03-10",
+        "author": "Smart Ag Research Team",
+        "changelog": "Added cross-region ablation; updated test-set results for 2024 season.",
+        "pdfUrl": "/uploads/papers/precision-farming-v2.1.0.pdf",
+        "status": "published"
+      },
+      {
+        "version": "v2.0.0",
+        "uploadedAt": "2025-11-22",
+        "author": "Smart Ag Research Team",
+        "changelog": "Production release: swap linear baseline for CNN+XGBoost ensemble.",
+        "pdfUrl": "/uploads/papers/precision-farming-v2.0.0.pdf",
+        "status": "internal"
+      },
+      {
+        "version": "v1.0.0",
+        "uploadedAt": "2024-05-04",
+        "author": "Geospatial Team",
+        "changelog": "Initial submission — NDVI-only yield regressor.",
+        "pdfUrl": "/uploads/papers/precision-farming-v1.0.0.pdf",
+        "status": "draft"
+      }
     ]
   },
   {
@@ -1034,20 +1099,6 @@
       {
         "label": "Coverage",
         "value": "Multi-mill"
-      }
-    ],
-    "benefits": [
-      {
-        "title": "Better sourcing",
-        "description": "Mill scheduling aligned with forecasted volume."
-      },
-      {
-        "title": "Reduced waste",
-        "description": "Cuts forecasting-driven logistics loss."
-      },
-      {
-        "title": "Explainable",
-        "description": "Feature importances surface drivers per region."
       }
     ],
     "metricNote": "Walk-forward validated against 5 seasons.",
@@ -1259,20 +1310,6 @@
       {
         "label": "Audit Coverage",
         "value": "Full"
-      }
-    ],
-    "benefits": [
-      {
-        "title": "Risk-managed AI",
-        "description": "Every model passes bias & impact review."
-      },
-      {
-        "title": "Auditable",
-        "description": "End-to-end decision traceability."
-      },
-      {
-        "title": "Investor confidence",
-        "description": "Credible ESG & compliance posture."
       }
     ],
     "metricNote": "Certification pursued with external ISO body.",
@@ -1488,20 +1525,6 @@
         "value": "−40%"
       }
     ],
-    "benefits": [
-      {
-        "title": "Fraud resistance",
-        "description": "Auditable imagery reduces dispute surface."
-      },
-      {
-        "title": "Throughput",
-        "description": "Sub-second grading cuts queue time."
-      },
-      {
-        "title": "Consistency",
-        "description": "Removes inter-grader variance."
-      }
-    ],
     "metricNote": "Field-trialed in blind comparison to human grading.",
     "research": {
       "problemStatement": "Manual weighbridge grading is slow, subjective, and vulnerable to fraud, causing payment disputes and throughput loss.",
@@ -1662,6 +1685,16 @@
     "relatedProjects": [
       8,
       2
+    ],
+    "papers": [
+      {
+        "version": "",
+        "uploadedAt": "2026-04-21T09:34:16.744Z",
+        "author": "SURIYA C",
+        "changelog": "",
+        "pdfUrl": "/papers/1776764056740-mai-improving-sugarcane-truck-detection-at-weight-scales-1-.pdf",
+        "status": "internal"
+      }
     ]
   },
   {
@@ -1716,20 +1749,6 @@
       {
         "label": "Install Time",
         "value": "<1 wk"
-      }
-    ],
-    "benefits": [
-      {
-        "title": "Consistent quality",
-        "description": "Removes inter-inspector variance."
-      },
-      {
-        "title": "Less spoilage",
-        "description": "Flags borderline loads sooner."
-      },
-      {
-        "title": "Solution package",
-        "description": "Pre-configured for rapid site install."
       }
     ],
     "metricNote": "Blind comparison — AI vs lab vs human inspector.",
@@ -1873,6 +1892,16 @@
     "relatedProjects": [
       7,
       2
+    ],
+    "papers": [
+      {
+        "version": "",
+        "uploadedAt": "2026-04-21T09:37:32.878Z",
+        "author": "",
+        "changelog": "",
+        "pdfUrl": "/papers/1776764252873-ai_sugarcane_tech_report_mar2026.pdf",
+        "status": "internal"
+      }
     ]
   },
   {
@@ -1927,20 +1956,6 @@
       {
         "label": "Trial Length",
         "value": "6 months"
-      }
-    ],
-    "benefits": [
-      {
-        "title": "Cost elimination",
-        "description": "Potential to remove recurring vendor licensing."
-      },
-      {
-        "title": "IP retention",
-        "description": "Models owned by MitrPhol."
-      },
-      {
-        "title": "Data-informed decision",
-        "description": "Produces evidence either way."
       }
     ],
     "metricNote": "Success criterion is rigorous equivalence — not novelty.",

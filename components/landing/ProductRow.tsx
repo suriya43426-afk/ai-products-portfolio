@@ -6,38 +6,51 @@ import { useState } from 'react';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { TechPill } from '@/components/ui/TechPill';
 import { KpiCard } from '@/components/ui/KpiCard';
-import { BenefitItem } from '@/components/ui/BenefitItem';
 import type { ProjectData } from '@/types/project';
 import { cn } from '@/lib/utils';
 
-export function ProductRow({ project, tone = 'white' }: { project: ProjectData; tone?: 'white' | 'blue' | 'navy' }) {
+export function ProductRow({
+  project,
+  tone = 'white',
+  accent,
+}: {
+  project: ProjectData;
+  tone?: 'white' | 'blue' | 'navy';
+  accent?: string;
+}) {
   const [open, setOpen] = useState(false);
 
   const shell =
     tone === 'navy'
       ? 'border-white/10 bg-white/5 text-white'
       : tone === 'blue'
-        ? 'border-blue-100 bg-white'
-        : 'border-slate-200 bg-white';
+        ? 'border-blue-100 bg-slate-50'
+        : 'border-slate-200 bg-slate-50';
 
   const titleClass = tone === 'navy' ? 'text-white' : 'text-navy-900';
   const descClass = tone === 'navy' ? 'text-slate-300' : 'text-slate-600';
 
   return (
-    <div className={cn('overflow-hidden rounded-2xl border transition', shell)}>
+    <div
+      className={cn('group overflow-hidden rounded-2xl border shadow-sm transition hover:shadow-md', shell)}
+      style={accent ? { borderLeft: `4px solid ${accent}` } : undefined}
+    >
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="grid w-full grid-cols-[96px_1fr_auto] items-center gap-5 p-4 text-left md:grid-cols-[140px_1fr_auto] md:gap-6 md:p-5"
         aria-expanded={open}
       >
-        <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl md:h-24 md:w-full">
+        <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl ring-1 ring-slate-200 md:h-24 md:w-full">
           <Image src={project.image} alt={project.title} fill className="object-cover" sizes="140px" />
         </div>
 
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <span className={cn('text-xs font-semibold', tone === 'navy' ? 'text-blue-300' : 'text-blue-600')}>
+            <span
+              className={cn('text-xs font-semibold', tone === 'navy' ? 'text-blue-300' : 'text-blue-600')}
+              style={accent && tone !== 'navy' ? { color: accent } : undefined}
+            >
               #{project.id}
             </span>
             <StatusBadge status={project.status} label={project.statusLabel} />
@@ -46,7 +59,9 @@ export function ProductRow({ project, tone = 'white' }: { project: ProjectData; 
           <div className={cn('mt-1 text-sm', descClass)}>{project.subtitle}</div>
           <div className="mt-3 flex flex-wrap gap-1.5">
             {project.techTags.slice(0, 4).map((t) => (
-              <TechPill key={t}>{t}</TechPill>
+              <TechPill key={t} className="bg-white">
+                {t}
+              </TechPill>
             ))}
           </div>
         </div>
@@ -54,7 +69,7 @@ export function ProductRow({ project, tone = 'white' }: { project: ProjectData; 
         <div
           className={cn(
             'flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition',
-            tone === 'navy' ? 'bg-white/10 text-white' : 'bg-slate-100 text-navy-900',
+            tone === 'navy' ? 'bg-white/10 text-white' : 'bg-white text-navy-900 ring-1 ring-slate-200',
             open && 'rotate-180',
           )}
           aria-hidden
@@ -66,7 +81,12 @@ export function ProductRow({ project, tone = 'white' }: { project: ProjectData; 
       </button>
 
       {open && (
-        <div className={cn('border-t px-4 py-6 md:px-5', tone === 'navy' ? 'border-white/10' : 'border-slate-200')}>
+        <div
+          className={cn(
+            'border-t px-4 py-6 md:px-5',
+            tone === 'navy' ? 'border-white/10 bg-white/5' : 'border-slate-200 bg-white',
+          )}
+        >
           <div className={cn('text-sm', descClass)}>{project.description}</div>
 
           <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3">
@@ -74,12 +94,6 @@ export function ProductRow({ project, tone = 'white' }: { project: ProjectData; 
               <KpiCard key={k.label} kpi={k} dark={tone === 'navy'} />
             ))}
           </div>
-
-          <ul className="mt-6 grid gap-3 md:grid-cols-3">
-            {project.benefits.map((b) => (
-              <BenefitItem key={b.title} benefit={b} />
-            ))}
-          </ul>
 
           <div className="mt-6 flex items-center justify-between">
             <div className={cn('text-xs italic', tone === 'navy' ? 'text-slate-400' : 'text-slate-500')}>

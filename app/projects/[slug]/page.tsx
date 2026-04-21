@@ -2,18 +2,23 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { Breadcrumb } from '@/components/layout/Breadcrumb';
 import { ProjectHero } from '@/components/project-detail/ProjectHero';
+import { Abstract } from '@/components/project-detail/Abstract';
 import { ResearchOverview } from '@/components/project-detail/ResearchOverview';
-import { Methodology } from '@/components/project-detail/Methodology';
+import { ResearchMethodology } from '@/components/project-detail/ResearchMethodology';
+import { AiMethodology } from '@/components/project-detail/AiMethodology';
 import { TechArchitecture } from '@/components/project-detail/TechArchitecture';
 import { DataPipeline } from '@/components/project-detail/DataPipeline';
 import { ExpectedOutcomes } from '@/components/project-detail/ExpectedOutcomes';
 import { Timeline } from '@/components/project-detail/Timeline';
 import { RiskMatrix } from '@/components/project-detail/RiskMatrix';
 import { BudgetSummary } from '@/components/project-detail/BudgetSummary';
-import { ResearchPaper } from '@/components/project-detail/ResearchPaper';
+import { References } from '@/components/project-detail/References';
+import { PapersSection } from '@/components/project-detail/PapersSection';
+import { LiteratureSection } from '@/components/project-detail/LiteratureSection';
 import { RelatedProjects } from '@/components/project-detail/RelatedProjects';
 import { Sidebar } from '@/components/project-detail/Sidebar';
 import { getAllProjects, getProjectBySlug } from '@/lib/projects';
+import { getLiteratureByProject } from '@/lib/literature';
 
 export const dynamic = 'force-dynamic';
 
@@ -40,7 +45,10 @@ export default async function ProjectDetailPage({
   const project = await getProjectBySlug(slug);
   if (!project) notFound();
 
-  const all = await getAllProjects();
+  const [all, literature] = await Promise.all([
+    getAllProjects(),
+    getLiteratureByProject(slug),
+  ]);
   const byId = (id: number) => all.find((p) => p.id === id);
   const depends = project.dependsOn
     .map(byId)
@@ -64,20 +72,24 @@ export default async function ProjectDetailPage({
           />
         </div>
       </div>
-      <div className="bg-slate-50">
+      <div className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-10 md:px-12 md:py-16">
           <div className="grid gap-8 lg:grid-cols-[260px_1fr]">
             <Sidebar project={project} depends={depends} feeds={feeds} />
             <div>
+              <Abstract project={project} />
               <ResearchOverview project={project} />
-              <Methodology project={project} />
+              <ResearchMethodology project={project} />
+              <AiMethodology project={project} />
               <TechArchitecture project={project} />
               <DataPipeline project={project} />
               <ExpectedOutcomes project={project} />
               <Timeline project={project} />
               <RiskMatrix project={project} />
               <BudgetSummary project={project} />
-              <ResearchPaper project={project} />
+              <References project={project} />
+              <PapersSection project={project} />
+              <LiteratureSection projectSlug={project.slug} initial={literature} />
               <RelatedProjects project={project} />
             </div>
           </div>

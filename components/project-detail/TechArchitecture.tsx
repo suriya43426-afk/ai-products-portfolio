@@ -3,7 +3,7 @@ import type { ProjectData } from '@/types/project';
 
 export function TechArchitecture({ project }: { project: ProjectData }) {
   return (
-    <SectionBlock id="architecture" number="03" title="Technical Architecture">
+    <SectionBlock id="architecture" number="04" title="Technical Architecture">
       <div className="grid gap-4 md:grid-cols-3">
         {project.techStack.map((group) => (
           <div key={group.category} className="rounded-2xl border border-slate-200 bg-white p-5">

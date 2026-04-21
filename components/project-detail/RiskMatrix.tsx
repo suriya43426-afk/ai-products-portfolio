@@ -10,7 +10,7 @@ const levelClass: Record<RiskLevel, string> = {
 
 export function RiskMatrix({ project }: { project: ProjectData }) {
   return (
-    <SectionBlock id="risks" number="07" title="Risk Assessment">
+    <SectionBlock id="risks" number="08" title="Risk Assessment">
       <div className="overflow-hidden rounded-2xl border border-slate-200">
         <table className="w-full text-sm">
           <thead className="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">

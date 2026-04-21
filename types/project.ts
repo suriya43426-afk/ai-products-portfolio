@@ -9,11 +9,6 @@ export interface KpiMetric {
   highlight?: 'green' | 'blue';
 }
 
-export interface Benefit {
-  title: string;
-  description: string;
-}
-
 export interface ResearchPhase {
   name: string;
   duration: string;
@@ -91,6 +86,63 @@ export interface TechStackItem {
   technologies: string[];
 }
 
+export interface AiMethodology {
+  problemFraming?: string;
+  data?: {
+    sources: string[];
+    volume?: string;
+    sampling?: string;
+  };
+  features?: string[];
+  model?: {
+    family: string;
+    architecture?: string;
+    hyperparams?: Record<string, string>;
+  };
+  training?: {
+    protocol?: string;
+    split?: string;
+    hardware?: string;
+  };
+  evaluation?: {
+    metrics: { name: string; value: string; baseline?: string }[];
+    notes?: string;
+  };
+  deployment?: {
+    topology?: string;
+    monitoring?: string[];
+  };
+  limitations?: string[];
+}
+
+export type PaperStatus = 'draft' | 'internal' | 'published';
+
+export interface PaperRevision {
+  version: string;
+  uploadedAt: string;
+  author: string;
+  changelog: string;
+  pdfUrl: string;
+  sha256?: string;
+  status: PaperStatus;
+}
+
+export interface Reference {
+  id: string;
+  citation: string;
+  url?: string;
+}
+
+export type TrlLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+
+export interface ProgressSnapshot {
+  percent: number;
+  stage: string;
+  milestone?: string;
+  trl?: TrlLevel;
+  updatedAt?: string;
+}
+
 export interface ProjectData {
   id: number;
   slug: string;
@@ -109,7 +161,6 @@ export interface ProjectData {
   techStack: TechStackItem[];
 
   kpis: KpiMetric[];
-  benefits: Benefit[];
   metricNote: string;
 
   research: ResearchMethodology;
@@ -122,7 +173,10 @@ export interface ProjectData {
   feedsInto: number[];
   relatedProjects: number[];
 
-  // Optional admin-managed content
-  researchHtml?: string;
-  paperPdf?: string;
+  // IEEE-style extensions
+  abstract?: string;
+  aiMethodology?: AiMethodology;
+  papers?: PaperRevision[];
+  references?: Reference[];
+  progress?: ProgressSnapshot;
 }
